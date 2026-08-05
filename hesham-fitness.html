@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>Hesham Fitness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14171c;
+  --bg-elevated:#1a1e24;
+  --surface:#20252c;
+  --surface-2:#2a3039;
+  --border:#343b46;
+  --border-soft:#2a3038;
+  --text:#eef0f2;
+  --text-dim:#98a1ad;
+  --text-faint:#5e6672;
+  --accent:#c17a4f;
+  --accent-strong:#e0965f;
+  --accent-soft:rgba(193,122,79,.16);
+  --teal:#4fb8b0;
+  --teal-soft:rgba(79,184,176,.16);
+  --olive:#8bb35a;
+  --olive-soft:rgba(139,179,90,.16);
+  --amber:#e0a458;
+  --amber-soft:rgba(224,164,88,.16);
+  --red:#d9695f;
+  --red-soft:rgba(217,105,95,.16);
+  --radius:14px;
+  --radius-sm:10px;
+  --font-h:'Cairo',system-ui,sans-serif;
+  --font-b:'Tajawal',system-ui,sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-b);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+#app{
+  max-width:480px;
+  margin:0 auto;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:var(--bg);
+  border-inline:1px solid var(--border-soft);
+  position:relative;
+}
+#brand{
+  padding:16px 18px 10px;
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+}
+#brand .wordmark{
+  font-family:var(--font-h);
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.5px;
+  color:var(--text);
+}
+#brand .wordmark span{color:var(--accent-strong);}
+#brand .streak{
+  font-size:12px;
+  color:var(--text-faint);
+  font-weight:700;
+}
+#view{
+  flex:1;
+  padding:4px 16px 100px;
+  overflow-y:auto;
+}
+h1,h2,h3{font-family:var(--font-h);margin:0;color:var(--text);}
+.eyebrow{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--text-faint);
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.section{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  border-radius:var(--radius);
+  padding:16px;
+  margin-bottom:14px;
+}
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+.section-head h2{font-size:16px;font-weight:800;}
+.section-head .sub{font-size:12px;color:var(--text-dim);font-weight:500;}
+.pill{
+  font-size:11px;
+  font-weight:800;
+  padding:3px 10px;
+  border-radius:99px;
+  background:var(--surface-2);
+  color:var(--text-dim);
+}
+.pill.olive{background:var(--olive-soft);color:var(--olive);}
+.pill.amber{background:var(--amber-soft);color:var(--amber);}
+.pill.accent{background:var(--accent-soft);color:var(--accent-strong);}
+.pill.teal{background:var(--teal-soft);color:var(--teal);}
+
+/* date nav */
+.datenav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:10px 0 16px;
+}
+.datenav button.navbtn{
+  width:36px;height:36px;border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text-dim);
+  font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+}
+.datenav .datelabel{
+  text-align:center;
+}
+.datenav .datelabel .day{font-family:var(--font-h);font-weight:800;font-size:15px;}
+.datenav .datelabel .today-tag{
+  font-size:10px;color:var(--accent-strong);font-weight:800;cursor:pointer;
+}
+
+/* score ring */
+.score-card{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:18px 16px;
+}
+.ring-wrap{position:relative;width:112px;height:112px;flex:none;}
+.ring-wrap svg{transform:rotate(-90deg);}
+.ring-wrap .ring-num{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.ring-wrap .ring-num b{font-family:var(--font-h);font-size:28px;font-weight:900;}
+.ring-wrap .ring-num small{font-size:10px;color:var(--text-faint);font-weight:700;}
+.score-verdict{flex:1;}
+.score-verdict .v-title{font-family:var(--font-h);font-weight:800;font-size:15px;margin-bottom:6px;}
+.score-verdict .v-desc{font-size:12.5px;color:var(--text-dim);line-height:1.6;}
+.bars{margin-top:14px;display:flex;flex-direction:column;gap:9px;}
+.bar-row{display:flex;align-items:center;gap:8px;}
+.bar-row .lbl{font-size:11.5px;color:var(--text-dim);width:56px;flex:none;font-weight:700;}
+.bar-track{flex:1;height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden;}
+.bar-fill{height:100%;border-radius:99px;}
+.bar-row .val{font-size:11px;color:var(--text-faint);width:34px;flex:none;text-align:left;font-weight:700;}
+
+/* mini history */
+.hist-row{display:flex;gap:6px;justify-content:space-between;margin-top:2px;}
+.hist-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.hist-bar-track{width:100%;height:56px;border-radius:8px;background:var(--surface-2);display:flex;align-items:flex-end;overflow:hidden;}
+.hist-bar-fill{width:100%;border-radius:8px;}
+.hist-col .hd{font-size:10px;color:var(--text-faint);font-weight:700;}
+
+/* checklist items */
+.item-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 0;
+  border-bottom:1px solid var(--border-soft);
+}
+.item-row:last-child{border-bottom:none;}
+.check{
+  width:24px;height:24px;border-radius:8px;
+  border:1.5px solid var(--border);
+  background:var(--bg-elevated);
+  flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:transparent;
+  transition:.15s;
+}
+.check.on{background:var(--olive);border-color:var(--olive);color:#0d0f12;}
+.item-info{flex:1;min-width:0;}
+.item-info .nm{font-size:13.5px;font-weight:700;}
+.item-info .meta{font-size:11px;color:var(--text-faint);margin-top:2px;}
+.qty-ctrl{display:flex;align-items:center;gap:6px;flex:none;}
+.qty-ctrl button{
+  width:24px;height:24px;border-radius:7px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--text-dim);font-size:13px;
+}
+.qty-ctrl .qv{font-size:12px;font-weight:800;width:30px;text-align:center;}
+
+.subhead{
+  font-size:11.5px;font-weight:800;color:var(--accent-strong);
+  margin:14px 0 4px;letter-spacing:.3px;
+}
+.subhead:first-child{margin-top:0;}
+
+.empty{
+  text-align:center;padding:22px 10px;color:var(--text-faint);font-size:12.5px;
+}
+
+/* water */
+.water-card{text-align:center;}
+.bottle-row{display:flex;align-items:center;justify-content:center;gap:16px;margin:14px 0 8px;}
+.bottle-row button{
+  width:46px;height:46px;border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--surface-2);
+  color:var(--text);
+  font-size:20px;font-weight:800;
+}
+.bottle-row button.plus{background:var(--teal);color:#0d1414;border-color:var(--teal);}
+.bottle-count{font-family:var(--font-h);font-size:34px;font-weight:900;min-width:70px;}
+.bottle-count small{font-size:12px;color:var(--text-faint);display:block;font-weight:700;}
+.water-total{font-size:12.5px;color:var(--text-dim);margin-top:6px;}
+.water-total b{color:var(--teal);font-weight:800;}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:10px 16px;border-radius:var(--radius-sm);
+  font-family:var(--font-b);font-weight:800;font-size:13px;
+  border:1px solid var(--border);
+  background:var(--surface-2);color:var(--text);
+  cursor:pointer;
+}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#19110a;}
+.btn.teal{background:var(--teal);border-color:var(--teal);color:#0d1414;}
+.btn.ghost{background:transparent;}
+.btn.danger{background:var(--red-soft);color:var(--red);border-color:transparent;}
+.btn.block{width:100%;}
+.btn.sm{padding:6px 10px;font-size:11.5px;}
+.addbar{margin-top:6px;}
+
+/* tabs header for library pages */
+.page-head{padding:8px 2px 14px;}
+.page-head h1{font-size:21px;font-weight:900;}
+.page-head p{font-size:12.5px;color:var(--text-dim);margin-top:4px;}
+
+.cat-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;}
+.cat-tabs button{
+  flex:none;padding:8px 14px;border-radius:99px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text-dim);font-family:var(--font-b);font-weight:800;font-size:12.5px;
+}
+.cat-tabs button.active{background:var(--accent);border-color:var(--accent);color:#19110a;}
+
+.lib-row{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 0;border-bottom:1px solid var(--border-soft);
+}
+.lib-row:last-child{border-bottom:none;}
+.lib-info{flex:1;min-width:0;}
+.lib-info .nm{font-size:13.5px;font-weight:700;}
+.lib-info .meta{font-size:11px;color:var(--text-faint);margin-top:3px;}
+.icon-btn{
+  width:30px;height:30px;border-radius:9px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--text-dim);flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.icon-btn.danger{color:var(--red);}
+.row-actions{display:flex;gap:6px;flex:none;}
+
+/* bottom nav */
+#bottomnav{
+  position:sticky;bottom:0;left:0;right:0;
+  display:flex;
+  background:var(--bg-elevated);
+  border-top:1px solid var(--border-soft);
+  padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+  max-width:480px;margin:0 auto;
+}
+#bottomnav button{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;
+  background:none;border:none;color:var(--text-faint);
+  font-family:var(--font-b);font-size:10px;font-weight:700;
+  padding:6px 2px;border-radius:10px;
+}
+#bottomnav button.active{color:var(--accent-strong);}
+#bottomnav button svg{width:20px;height:20px;}
+
+/* modal */
+#modal-root{position:fixed;inset:0;z-index:50;display:none;}
+#modal-root.open{display:block;}
+.modal-backdrop{position:absolute;inset:0;background:rgba(8,9,11,.62);}
+.modal-sheet{
+  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:100%;max-width:480px;
+  background:var(--bg-elevated);
+  border-top:1px solid var(--border);
+  border-radius:20px 20px 0 0;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  max-height:88vh;overflow-y:auto;
+}
+.modal-sheet h3{font-size:16px;font-weight:800;margin-bottom:14px;}
+.field{margin-bottom:12px;}
+.field label{display:block;font-size:11.5px;font-weight:800;color:var(--text-dim);margin-bottom:6px;}
+.field input,.field select,.field textarea{
+  width:100%;padding:10px 12px;border-radius:10px;
+  border:1px solid var(--border);background:var(--surface);color:var(--text);
+  font-family:var(--font-b);font-size:13.5px;
+}
+.field .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.field .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.modal-actions{display:flex;gap:8px;margin-top:16px;}
+.modal-actions .btn{flex:1;}
+
+/* sets logging */
+.set-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.set-row .set-idx{width:22px;font-size:11px;color:var(--text-faint);font-weight:800;flex:none;}
+.set-row input{width:0;flex:1;padding:8px 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13px;}
+.set-row .icon-btn{width:28px;height:28px;}
+.exwrap{border:1px solid var(--border-soft);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--bg-elevated);}
+.exwrap .exhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.exwrap .exhead .nm{font-weight:800;font-size:13.5px;}
+.exwrap .exhead .vol{font-size:11px;color:var(--text-faint);font-weight:700;}
+.rest-toggle{display:flex;align-items:center;justify-content:space-between;padding:10px 4px;margin-top:8px;}
+.rest-toggle .lbl{font-size:12.5px;font-weight:700;color:var(--text-dim);}
+.switch{width:42px;height:24px;border-radius:99px;background:var(--surface-2);border:1px solid var(--border);position:relative;flex:none;}
+.switch.on{background:var(--olive);border-color:var(--olive);}
+.switch .dot{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;background:var(--text);transition:.15s;}
+.switch.on .dot{right:20px;background:#0d0f12;}
+
+/* toast */
+#toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--surface-2);color:var(--text);border:1px solid var(--border);
+  padding:10px 18px;border-radius:99px;font-size:12.5px;font-weight:700;
+  opacity:0;pointer-events:none;transition:.2s;z-index:60;
+  max-width:90%;text-align:center;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+.confirm-sheet{max-width:340px;left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%);border-radius:18px;border:1px solid var(--border);}
+.confirm-sheet p{font-size:13px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;}
+
+::-webkit-scrollbar{width:0;height:0;}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="brand">
+    <div class="wordmark">HESHAM <span>FITNESS</span></div>
+    <div class="streak" id="streakTag"></div>
+  </div>
+  <main id="view"></main>
+  <nav id="bottomnav"></nav>
+</div>
+<div id="modal-root">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-sheet" id="modalSheet"></div>
+</div>
+<div id="toast"></div>
+
+<script>
+/* ============ ICONS ============ */
+const ICONS = {
+  today: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.5h17"/><path d="M8 3v3.2M16 3v3.2"/><path d="M8 13.2h2M8 16.6h2M14 13.2h2M14 16.6h2"/></svg>',
+  ex: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M2.5 10.3v3.4"/><path d="M20 9v6M21.5 10.3v3.4"/><rect x="6" y="7.5" width="3" height="9" rx="1"/><rect x="15" y="7.5" width="3" height="9" rx="1"/><path d="M9 12h6"/></svg>',
+  meal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7a2 2 0 0 0 2 2v9M6 3v7M8.5 3v7M4.5 3v7"/><path d="M17 3c-1.7 0-3 1.9-3 5s1.3 5 3 5v8"/></svg>',
+  sup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7" width="17" height="10" rx="5" transform="rotate(-35 12 12)"/><path d="M9.5 9.5l5 5"/></svg>',
+  settings: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M17 6h3M4 12h3M8 12h12M4 18h10M17 18h3"/><circle cx="16.5" cy="6" r="2.2"/><circle cx="6.5" cy="12" r="2.2"/><circle cx="16.5" cy="18" r="2.2"/></svg>',
+  plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+  edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4.2L15.5 5.3a1.5 1.5 0 0 1 2.1 0l1.1 1.1a1.5 1.5 0 0 1 0 2.1L8.2 19 4 20Z"/></svg>',
+  trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14M9 7V5.2A1.2 1.2 0 0 1 10.2 4h3.6A1.2 1.2 0 0 1 15 5.2V7M7 7l1 12.2a1.5 1.5 0 0 0 1.5 1.4h5a1.5 1.5 0 0 0 1.5-1.4L17 7"/></svg>',
+  chevL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"/></svg>',
+  chevR: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg>',
+};
+
+/* ============ DEFAULT DATA ============ */
+function uid(p){return p+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+function defaultDB(){
+  return {
+    settings:{waterGoalL:3, bottleMl:500, calorieGoal:2200, proteinGoal:150, carbGoal:220, fatGoal:70},
+    exercises:[
+      {id:uid('ex'),name:'بنش برس بار',muscle:'صدر',sets:4,reps:'8-10'},
+      {id:uid('ex'),name:'بنش انكلاين دمبل',muscle:'صدر',sets:3,reps:'10-12'},
+      {id:uid('ex'),name:'تفتيح صدر كيبل',muscle:'صدر',sets:3,reps:'12-15'},
+      {id:uid('ex'),name:'سحب أمامي لات بلداون',muscle:'ظهر',sets:4,reps:'10-12'},
+      {id:uid('ex'),name:'تجديف بار',muscle:'ظهر',sets:4,reps:'8-10'},
+      {id:uid('ex'),name:'ديدليفت',muscle:'ظهر',sets:3,reps:'6-8'},
+      {id:uid('ex'),name:'سكوات',muscle:'أرجل',sets:4,reps:'8-10'},
+      {id:uid('ex'),name:'ليج بريس',muscle:'أرجل',sets:4,reps:'10-12'},
+      {id:uid('ex'),name:'لانجز دمبل',muscle:'أرجل',sets:3,reps:'12/جنب'},
+      {id:uid('ex'),name:'ضغط أكتاف دمبل',muscle:'أكتاف',sets:4,reps:'8-10'},
+      {id:uid('ex'),name:'رفرفة جانبية',muscle:'أكتاف',sets:3,reps:'12-15'},
+      {id:uid('ex'),name:'باي دمبل',muscle:'ذراع',sets:3,reps:'10-12'},
+      {id:uid('ex'),name:'تراي كيبل',muscle:'ذراع',sets:3,reps:'10-12'},
+      {id:uid('ex'),name:'كرانش',muscle:'بطن',sets:3,reps:'15-20'},
+      {id:uid('ex'),name:'بلانك',muscle:'بطن',sets:3,reps:'45 ثانية'},
+    ],
+    meals:{
+      breakfast:[
+        {id:uid('mi'),name:'بيض مسلوق (2 بيضة)',cal:140,protein:12,carb:1,fat:10,unit:'حصة'},
+        {id:uid('mi'),name:'شوفان بالحليب',cal:230,protein:9,carb:35,fat:6,unit:'طبق'},
+        {id:uid('mi'),name:'جبنة قريش + خبز أسمر',cal:210,protein:16,carb:24,fat:5,unit:'حصة'},
+      ],
+      lunch:[
+        {id:uid('mi'),name:'صدر فرخة مشوي 150جم',cal:250,protein:46,carb:0,fat:6,unit:'حصة'},
+        {id:uid('mi'),name:'أرز أسمر',cal:215,protein:5,carb:45,fat:2,unit:'كوب'},
+        {id:uid('mi'),name:'سلطة خضرا',cal:60,protein:2,carb:9,fat:2,unit:'طبق'},
+      ],
+      dinner:[
+        {id:uid('mi'),name:'تونة + سلطة',cal:220,protein:30,carb:8,fat:7,unit:'طبق'},
+        {id:uid('mi'),name:'سمك مشوي',cal:210,protein:36,carb:0,fat:6,unit:'حصة'},
+      ],
+      snacks:[
+        {id:uid('mi'),name:'زبادي يوناني',cal:130,protein:12,carb:8,fat:5,unit:'علبة'},
+        {id:uid('mi'),name:'لوز (30جم)',cal:170,protein:6,carb:6,fat:14,unit:'حفنة'},
+        {id:uid('mi'),name:'موزة',cal:105,protein:1,carb:27,fat:0,unit:'حبة'},
+      ],
+    },
+    supplements:{
+      morning:[
+        {id:uid('sp'),name:'مالتي فيتامين',dose:'حبة واحدة'},
+        {id:uid('sp'),name:'أوميجا 3',dose:'كبسولة'},
+      ],
+      midday:[
+        {id:uid('sp'),name:'كرياتين',dose:'5 جم'},
+      ],
+      night:[
+        {id:uid('sp'),name:'واي بروتين',dose:'سكوب واحد'},
+        {id:uid('sp'),name:'ماغنيسيوم / ZMA',dose:'كبسولتين'},
+      ],
+    },
+    logs:{},
+  };
+}
+const MEAL_CATS = [
+  {key:'breakfast',label:'فطار'},
+  {key:'lunch',label:'غداء'},
+  {key:'dinner',label:'عشاء'},
+  {key:'snacks',label:'سناكس'},
+];
+const SUP_SLOTS = [
+  {key:'morning',label:'الصبح'},
+  {key:'midday',label:'نص اليوم'},
+  {key:'night',label:'بالليل'},
+];
+const MUSCLES = ['صدر','ظهر','أرجل','أكتاف','ذراع','بطن','كارديو'];
+
+/* ============ STATE ============ */
+let DB = null;
+let ui = {tab:'today', date: todayStr(), exCat:'الكل', mealCat:'breakfast', supSlot:'morning'};
+
+function todayStr(d){
+  d = d || new Date();
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+function shiftDate(dateStr, delta){
+  const d = new Date(dateStr+'T12:00:00');
+  d.setDate(d.getDate()+delta);
+  return todayStr(d);
+}
+const AR_DAYS = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const AR_MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+function fmtDateArabic(dateStr){
+  const d = new Date(dateStr+'T12:00:00');
+  return `${AR_DAYS[d.getDay()]}، ${d.getDate()} ${AR_MONTHS[d.getMonth()]}`;
+}
+
+/* ============ PERSISTENCE ============ */
+async function loadDB(){
+  try{
+    const res = await window.storage.get('fitness-db', false);
+    DB = res && res.value ? JSON.parse(res.value) : defaultDB();
+  }catch(e){
+    DB = defaultDB();
+  }
+  ensureLog(ui.date);
+  render();
+}
+async function persist(){
+  try{
+    await window.storage.set('fitness-db', JSON.stringify(DB), false);
+  }catch(e){
+    toast('حصل خطأ في الحفظ، حاول تاني');
+  }
+}
+function commit(){ persist(); render(); }
+
+function ensureLog(dateStr){
+  if(!DB.logs[dateStr]){
+    DB.logs[dateStr] = {
+      workout:{entries:[], restDay:false},
+      meals:{breakfast:[],lunch:[],dinner:[],snacks:[]},
+      supplements:{morning:[],midday:[],night:[]},
+      water:{bottles:0},
+    };
+  }
+  const l = DB.logs[dateStr];
+  if(!l.workout) l.workout = {entries:[], restDay:false};
+  if(l.workout.restDay===undefined) l.workout.restDay=false;
+  if(!l.meals) l.meals = {breakfast:[],lunch:[],dinner:[],snacks:[]};
+  if(!l.supplements) l.supplements = {morning:[],midday:[],night:[]};
+  if(!l.water) l.water = {bottles:0};
+  return l;
+}
+
+/* ============ TOAST ============ */
+let toastTimer=null;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+/* ============ SCORE ENGINE ============ */
+function round1(n){return Math.round(n*10)/10;}
+function clamp(n,a,b){return Math.max(a,Math.min(b,n));}
+
+function computeMealTotals(log){
+  let cal=0, protein=0, carb=0, fat=0, loggedCats=0;
+  MEAL_CATS.forEach(c=>{
+    const entries = log.meals[c.key]||[];
+    if(entries.length>0) loggedCats++;
+    entries.forEach(e=>{
+      const item = (DB.meals[c.key]||[]).find(i=>i.id===e.itemId);
+      if(!item) return;
+      cal += item.cal*e.qty;
+      protein += item.protein*e.qty;
+      carb += item.carb*e.qty;
+      fat += item.fat*e.qty;
+    });
+  });
+  return {cal:Math.round(cal), protein:round1(protein), carb:round1(carb), fat:round1(fat), loggedCats};
+}
+function computeWorkoutStats(log){
+  let sets=0, exCount=0, volume=0;
+  (log.workout.entries||[]).forEach(e=>{
+    if(e.sets && e.sets.length>0) exCount++;
+    (e.sets||[]).forEach(s=>{
+      sets++;
+      volume += (Number(s.reps)||0)*(Number(s.weight)||0);
+    });
+  });
+  return {sets, exCount, volume:Math.round(volume)};
+}
+function computeSupStats(log){
+  let total=0, taken=0;
+  SUP_SLOTS.forEach(s=>{
+    const lib = DB.supplements[s.key]||[];
+    total += lib.length;
+    taken += (log.supplements[s.key]||[]).length;
+  });
+  return {total, taken};
+}
+function computeScore(dateStr){
+  const log = ensureLog(dateStr);
+  const settings = DB.settings;
+
+  const liters = (log.water.bottles||0)*settings.bottleMl/1000;
+  const waterScore = settings.waterGoalL>0 ? clamp(liters/settings.waterGoalL,0,1)*100 : 0;
+
+  const mt = computeMealTotals(log);
+  const catScore = (mt.loggedCats/4)*100;
+  let calScore = 0;
+  if(mt.cal>0 && settings.calorieGoal>0){
+    calScore = clamp(1 - Math.abs(mt.cal-settings.calorieGoal)/settings.calorieGoal, 0, 1)*100;
+  }
+  const mealsScore = mt.cal>0 ? (catScore*0.6 + calScore*0.4) : catScore*0.6;
+
+  const ws = computeWorkoutStats(log);
+  let workoutScore;
+  if(log.workout.restDay){
+    workoutScore = 100;
+  } else {
+    workoutScore = clamp(ws.sets/12, 0, 1)*100;
+  }
+
+  const ss = computeSupStats(log);
+  const supScore = ss.total>0 ? (ss.taken/ss.total)*100 : 0;
+
+  const overall = Math.round((waterScore+mealsScore+workoutScore+supScore)/4);
+
+  return {
+    overall,
+    water: Math.round(waterScore),
+    meals: Math.round(mealsScore),
+    workout: Math.round(workoutScore),
+    supplements: Math.round(supScore),
+    mealTotals: mt,
+    workoutStats: ws,
+    supStats: ss,
+    liters: round1(liters),
+  };
+}
+function scoreColor(v){
+  if(v>=85) return 'var(--accent-strong)';
+  if(v>=65) return 'var(--olive)';
+  if(v>=40) return 'var(--amber)';
+  return 'var(--red)';
+}
+function verdictText(v){
+  if(v>=90) return ['يوم استثنائي 🔥','كملت أكل وتمرين ومياه ومكملات بانضباط عالي. كمل كده.'];
+  if(v>=75) return ['يوم قوي 💪','التزام كويس جدًا النهاردة، فيه تفاصيل بسيطة تقدر تظبطها.'];
+  if(v>=55) return ['يوم كويس','فيه التزام لكن لسه فيه حاجات ناقصة في الخطة.'];
+  if(v>=35) return ['يوم متوسط','حاول تسجل أكل وتمرين ومياه بانتظام أكتر بكرة.'];
+  return ['يوم ضعيف','مفيش تسجيل كفاية النهاردة، يلا نرجع بقوة بكرة.'];
+}
+
+/* ============ RENDER ROOT ============ */
+function render(){
+  ensureLog(ui.date);
+  renderBottomNav();
+  const view = document.getElementById('view');
+  if(ui.tab==='today') view.innerHTML = renderToday();
+  else if(ui.tab==='exercises') view.innerHTML = renderExercisesTab();
+  else if(ui.tab==='meals') view.innerHTML = renderMealsTab();
+  else if(ui.tab==='supplements') view.innerHTML = renderSupplementsTab();
+  else if(ui.tab==='settings') view.innerHTML = renderSettingsTab();
+
+  const streak = computeStreak();
+  document.getElementById('streakTag').textContent = streak>0 ? `🔥 ${streak} يوم متتالي` : '';
+}
+function setTab(t){ ui.tab=t; render(); }
+
+function computeStreak(){
+  let streak=0;
+  let d = todayStr();
+  while(true){
+    const log = DB.logs[d];
+    if(!log) break;
+    const sc = computeScore(d);
+    if(sc.overall < 40) break;
+    streak++;
+    d = shiftDate(d,-1);
+    if(streak>60) break;
+  }
+  return streak;
+}
+
+function renderBottomNav(){
+  const tabs = [
+    {k:'today',label:'اليوم',icon:ICONS.today},
+    {k:'exercises',label:'تمارين',icon:ICONS.ex},
+    {k:'meals',label:'وجبات',icon:ICONS.meal},
+    {k:'supplements',label:'مكملات',icon:ICONS.sup},
+    {k:'settings',label:'إعدادات',icon:ICONS.settings},
+  ];
+  document.getElementById('bottomnav').innerHTML = tabs.map(t=>`
+    <button class="${ui.tab===t.k?'active':''}" onclick="setTab('${t.k}')">${t.icon}<span>${t.label}</span></button>
+  `).join('');
+}
+
+/* ============ TODAY VIEW ============ */
+function renderToday(){
+  const log = ensureLog(ui.date);
+  const sc = computeScore(ui.date);
+  const isToday = ui.date===todayStr();
+  const circumference = 2*Math.PI*46;
+  const dash = circumference*(sc.overall/100);
+  const vt = verdictText(sc.overall);
+  const vTitle = vt[0], vDesc = vt[1];
+
+  return `
+  <div class="datenav">
+    <button class="navbtn" onclick="navDate(-1)">${ICONS.chevR}</button>
+    <div class="datelabel">
+      <div class="day">${fmtDateArabic(ui.date)}</div>
+      ${isToday?'':'<div class="today-tag" onclick="goToday()">الرجوع للنهاردة</div>'}
+    </div>
+    <button class="navbtn" onclick="navDate(1)">${ICONS.chevL}</button>
+  </div>
+
+  <div class="section score-card">
+    <div class="ring-wrap">
+      <svg width="112" height="112" viewBox="0 0 112 112">
+        <circle cx="56" cy="56" r="46" fill="none" stroke="var(--surface-2)" stroke-width="10"/>
+        <circle cx="56" cy="56" r="46" fill="none" stroke="${scoreColor(sc.overall)}" stroke-width="10"
+          stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference-dash}"/>
+      </svg>
+      <div class="ring-num"><b>${sc.overall}</b><small>من 100</small></div>
+    </div>
+    <div class="score-verdict">
+      <div class="v-title">${vTitle}</div>
+      <div class="v-desc">${vDesc}</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="bars">
+      ${barRow('الأكل', sc.meals, 'var(--accent-strong)')}
+      ${barRow('التمرين', sc.workout, 'var(--olive)')}
+      ${barRow('المكملات', sc.supplements, 'var(--amber)')}
+      ${barRow('المياه', sc.water, 'var(--teal)')}
+    </div>
+  </div>
+
+  ${renderWorkoutSection(log)}
+  ${MEAL_CATS.map(c=>renderMealSection(log,c)).join('')}
+  ${renderMealTotalsCard(sc)}
+  ${renderSupplementsSection(log)}
+  ${renderWaterCard(log, sc)}
+  ${renderHistoryStrip()}
+  `;
+}
+function barRow(label, val, color){
+  return `<div class="bar-row">
+    <div class="lbl">${label}</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${clamp(val,0,100)}%;background:${color}"></div></div>
+    <div class="val">${val}%</div>
+  </div>`;
+}
+
+function renderWorkoutSection(log){
+  const entries = log.workout.entries||[];
+  const rest = log.workout.restDay;
+  const stats = computeWorkoutStats(log);
+  return `
+  <div class="section">
+    <div class="section-head">
+      <h2>تمرين اليوم</h2>
+      <span class="pill olive">${stats.sets} سِت · ${stats.volume} كجم حجم</span>
+    </div>
+    ${rest ? `<div class="empty">يوم راحة النهاردة 🛌</div>` : (
+      entries.length===0 ? `<div class="empty">لسه مفيش تمرين متسجل النهاردة</div>` :
+      entries.map(e=>renderExerciseEntry(e)).join('')
+    )}
+    ${rest?'':`<div class="addbar"><button class="btn ghost block" onclick="openAddExerciseToday()">${ICONS.plus} إضافة تمرين لليوم</button></div>`}
+    <div class="rest-toggle">
+      <div class="lbl">يوم راحة (بدون تمرين)</div>
+      <div class="switch ${rest?'on':''}" onclick="toggleRestDay()"><div class="dot"></div></div>
+    </div>
+  </div>`;
+}
+function renderExerciseEntry(entry){
+  const exDef = DB.exercises.find(x=>x.id===entry.exerciseId);
+  const name = exDef ? exDef.name : 'تمرين محذوف';
+  const vol = (entry.sets||[]).reduce((s,x)=>s+(Number(x.reps)||0)*(Number(x.weight)||0),0);
+  return `
+  <div class="exwrap">
+    <div class="exhead">
+      <div class="nm">${name}</div>
+      <div class="vol">${(entry.sets||[]).length} سِت · ${Math.round(vol)} كجم</div>
+    </div>
+    ${(entry.sets||[]).map((s,i)=>`
+      <div class="set-row">
+        <div class="set-idx">${i+1}</div>
+        <input type="number" inputmode="decimal" placeholder="عدد" value="${s.reps??''}" onchange="updateSet('${entry.id}',${i},'reps',this.value)">
+        <input type="number" inputmode="decimal" placeholder="وزن كجم" value="${s.weight??''}" onchange="updateSet('${entry.id}',${i},'weight',this.value)">
+        <button class="icon-btn danger" onclick="removeSet('${entry.id}',${i})">${ICONS.trash}</button>
+      </div>
+    `).join('')}
+    <div style="display:flex;gap:8px;margin-top:8px;">
+      <button class="btn sm ghost" onclick="addSet('${entry.id}')">${ICONS.plus} سِت</button>
+      <button class="btn sm danger" onclick="removeExerciseEntry('${entry.id}')">${ICONS.trash} حذف التمرين</button>
+    </div>
+  </div>`;
+}
+
+function renderMealSection(log, cat){
+  const libItems = DB.meals[cat.key]||[];
+  const entries = log.meals[cat.key]||[];
+  let cal=0, pro=0;
+  entries.forEach(e=>{
+    const it = libItems.find(i=>i.id===e.itemId);
+    if(it){cal+=it.cal*e.qty; pro+=it.protein*e.qty;}
+  });
+  return `
+  <div class="section">
+    <div class="section-head">
+      <h2>${cat.label}</h2>
+      <span class="pill accent">${Math.round(cal)} سعرة · ${round1(pro)} بروتين</span>
+    </div>
+    ${libItems.length===0 ? `<div class="empty">مفيش عناصر في مكتبة ${cat.label} لسه</div>` :
+      libItems.map(it=>{
+        const e = entries.find(x=>x.itemId===it.id);
+        const on = !!e;
+        const qty = e?e.qty:1;
+        return `
+        <div class="item-row">
+          <div class="check ${on?'on':''}" onclick="toggleMealItem('${cat.key}','${it.id}')">${on?'✓':''}</div>
+          <div class="item-info">
+            <div class="nm">${it.name}</div>
+            <div class="meta">${it.cal} سعرة · ${it.protein}ج بروتين · ${it.unit}</div>
+          </div>
+          ${on?`<div class="qty-ctrl">
+            <button onclick="changeQty('${cat.key}','${it.id}',-0.5)">−</button>
+            <div class="qv">×${qty}</div>
+            <button onclick="changeQty('${cat.key}','${it.id}',0.5)">+</button>
+          </div>`:''}
+        </div>`;
+      }).join('')
+    }
+  </div>`;
+}
+function renderMealTotalsCard(sc){
+  const mt = sc.mealTotals;
+  const settings = DB.settings;
+  return `
+  <div class="section">
+    <div class="section-head"><h2>إجمالي أكل اليوم</h2></div>
+    <div class="field grid2" style="margin-bottom:0;">
+      <div class="pill" style="text-align:center;padding:10px;">${mt.cal} <br><small style="color:var(--text-faint)">سعرة / ${settings.calorieGoal}</small></div>
+      <div class="pill" style="text-align:center;padding:10px;">${mt.protein}ج <br><small style="color:var(--text-faint)">بروتين / ${settings.proteinGoal}</small></div>
+      <div class="pill" style="text-align:center;padding:10px;">${mt.carb}ج <br><small style="color:var(--text-faint)">كارب</small></div>
+      <div class="pill" style="text-align:center;padding:10px;">${mt.fat}ج <br><small style="color:var(--text-faint)">دهون</small></div>
+    </div>
+  </div>`;
+}
+
+function renderSupplementsSection(log){
+  return `
+  <div class="section">
+    <div class="section-head"><h2>مكملات اليوم</h2></div>
+    ${SUP_SLOTS.map(s=>{
+      const lib = DB.supplements[s.key]||[];
+      const taken = log.supplements[s.key]||[];
+      return `
+      <div class="subhead">${s.label}</div>
+      ${lib.length===0?`<div class="empty" style="padding:10px;">مفيش مكملات مضافة</div>`:
+        lib.map(sp=>{
+          const on = taken.includes(sp.id);
+          return `<div class="item-row">
+            <div class="check ${on?'on':''}" onclick="toggleSupplement('${s.key}','${sp.id}')">${on?'✓':''}</div>
+            <div class="item-info"><div class="nm">${sp.name}</div><div class="meta">${sp.dose||''}</div></div>
+          </div>`;
+        }).join('')
+      }`;
+    }).join('')}
+  </div>`;
+}
+
+function renderWaterCard(log, sc){
+  const settings = DB.settings;
+  return `
+  <div class="section water-card">
+    <div class="section-head" style="text-align:right;"><h2>المياه</h2><span class="pill teal">${sc.liters} / ${settings.waterGoalL} لتر</span></div>
+    <div class="bottle-row">
+      <button onclick="changeBottles(-0.5)">−</button>
+      <div class="bottle-count">${log.water.bottles}<small>ازازة (${settings.bottleMl} مل)</small></div>
+      <button class="plus" onclick="changeBottles(0.5)">+</button>
+    </div>
+    <div class="water-total">شربت <b>${sc.liters} لتر</b> بالظبط من ${settings.waterGoalL} لتر المستهدفة</div>
+  </div>`;
+}
+
+function renderHistoryStrip(){
+  const days = [];
+  for(let i=6;i>=0;i--) days.push(shiftDate(todayStr(),-i));
+  return `
+  <div class="section">
+    <div class="section-head"><h2>آخر 7 أيام</h2></div>
+    <div class="hist-row">
+      ${days.map(d=>{
+        const has = !!DB.logs[d];
+        const sc = has?computeScore(d):{overall:0};
+        const dd = new Date(d+'T12:00:00');
+        return `<div class="hist-col">
+          <div class="hist-bar-track"><div class="hist-bar-fill" style="height:${has?sc.overall:0}%;background:${scoreColor(sc.overall)}"></div></div>
+          <div class="hd">${AR_DAYS[dd.getDay()].slice(0,2)}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+/* ---- today actions ---- */
+function navDate(delta){ ui.date = shiftDate(ui.date, delta); ensureLog(ui.date); render(); }
+function goToday(){ ui.date = todayStr(); render(); }
+function toggleRestDay(){
+  const log = ensureLog(ui.date);
+  log.workout.restDay = !log.workout.restDay;
+  commit();
+}
+function toggleMealItem(catKey, itemId){
+  const log = ensureLog(ui.date);
+  const arr = log.meals[catKey];
+  const idx = arr.findIndex(e=>e.itemId===itemId);
+  if(idx>=0) arr.splice(idx,1);
+  else arr.push({itemId, qty:1});
+  commit();
+}
+function changeQty(catKey, itemId, delta){
+  const log = ensureLog(ui.date);
+  const e = log.meals[catKey].find(x=>x.itemId===itemId);
+  if(!e) return;
+  e.qty = Math.max(0.5, round1(e.qty+delta));
+  commit();
+}
+function toggleSupplement(slot, id){
+  const log = ensureLog(ui.date);
+  const arr = log.supplements[slot];
+  const idx = arr.indexOf(id);
+  if(idx>=0) arr.splice(idx,1); else arr.push(id);
+  commit();
+}
+function changeBottles(delta){
+  const log = ensureLog(ui.date);
+  log.water.bottles = Math.max(0, round1(log.water.bottles+delta));
+  commit();
+}
+function addSet(entryId){
+  const log = ensureLog(ui.date);
+  const e = log.workout.entries.find(x=>x.id===entryId);
+  if(!e) return;
+  e.sets.push({reps:'',weight:''});
+  commit();
+}
+function updateSet(entryId, idx, field, val){
+  const log = ensureLog(ui.date);
+  const e = log.workout.entries.find(x=>x.id===entryId);
+  if(!e) return;
+  e.sets[idx][field] = val===''?'':Number(val);
+  commit();
+}
+function removeSet(entryId, idx){
+  const log = ensureLog(ui.date);
+  const e = log.workout.entries.find(x=>x.id===entryId);
+  if(!e) return;
+  e.sets.splice(idx,1);
+  commit();
+}
+function removeExerciseEntry(entryId){
+  const log = ensureLog(ui.date);
+  log.workout.entries = log.workout.entries.filter(x=>x.id!==entryId);
+  commit();
+}
+function openAddExerciseToday(){
+  const already = new Set(ensureLog(ui.date).workout.entries.map(e=>e.exerciseId));
+  const list = DB.exercises.filter(e=>!already.has(e.id));
+  openModal('اختار تمرين', `
+    ${list.length===0?'<div class="empty">كل التمارين مضافة بالفعل، تقدر تضيف تمرين جديد من تبويب "تمارين"</div>':
+      list.map(e=>`
+      <div class="lib-row" style="cursor:pointer" onclick="addExerciseToday('${e.id}')">
+        <div class="lib-info"><div class="nm">${e.name}</div><div class="meta">${e.muscle} · ${e.sets}×${e.reps}</div></div>
+        ${ICONS.plus}
+      </div>`).join('')
+    }
+  `);
+}
+function addExerciseToday(exId){
+  const log = ensureLog(ui.date);
+  log.workout.entries.push({id:uid('we'), exerciseId:exId, sets:[{reps:'',weight:''}]});
+  log.workout.restDay = false;
+  closeModal();
+  commit();
+}
+
+/* ============ EXERCISES LIBRARY TAB ============ */
+function renderExercisesTab(){
+  const cats = ['الكل', ...MUSCLES];
+  const list = ui.exCat==='الكل' ? DB.exercises : DB.exercises.filter(e=>e.muscle===ui.exCat);
+  return `
+  <div class="page-head"><h1>مكتبة التمارين</h1><p>كل التمارين اللي بتلعبها، مقسّمة حسب العضلة</p></div>
+  <div class="cat-tabs">${cats.map(c=>`<button class="${ui.exCat===c?'active':''}" onclick="setExCat('${c}')">${c}</button>`).join('')}</div>
+  <div class="section">
+    ${list.length===0?'<div class="empty">مفيش تمارين هنا لسه</div>':
+      list.map(e=>`
+      <div class="lib-row">
+        <div class="lib-info"><div class="nm">${e.name}</div><div class="meta">${e.muscle} · ${e.sets} سِت × ${e.reps}</div></div>
+        <div class="row-actions">
+          <div class="icon-btn" onclick="openEditExercise('${e.id}')">${ICONS.edit}</div>
+          <div class="icon-btn danger" onclick="askDeleteExercise('${e.id}')">${ICONS.trash}</div>
+        </div>
+      </div>`).join('')
+    }
+  </div>
+  <button class="btn primary block" onclick="openEditExercise(null)">${ICONS.plus} إضافة تمرين جديد</button>
+  `;
+}
+function setExCat(c){ui.exCat=c; render();}
+function openEditExercise(id){
+  const ex = id?DB.exercises.find(e=>e.id===id):{name:'',muscle:MUSCLES[0],sets:3,reps:'10-12'};
+  openModal(id?'تعديل تمرين':'تمرين جديد', `
+    <div class="field"><label>اسم التمرين</label><input id="f_name" value="${ex.name}"></div>
+    <div class="field"><label>العضلة</label><select id="f_muscle">${MUSCLES.map(m=>`<option ${m===ex.muscle?'selected':''}>${m}</option>`).join('')}</select></div>
+    <div class="field grid2">
+      <div><label>عدد السِتات</label><input id="f_sets" type="number" value="${ex.sets}"></div>
+      <div><label>التكرارات</label><input id="f_reps" value="${ex.reps}"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn primary" onclick="saveExercise('${id||''}')">حفظ</button>
+      <button class="btn ghost" onclick="closeModal()">إلغاء</button>
+    </div>
+  `);
+}
+function saveExercise(id){
+  const name = document.getElementById('f_name').value.trim();
+  const muscle = document.getElementById('f_muscle').value;
+  const sets = Number(document.getElementById('f_sets').value)||3;
+  const reps = document.getElementById('f_reps').value.trim();
+  if(!name){toast('اكتب اسم التمرين');return;}
+  if(id){
+    const ex = DB.exercises.find(e=>e.id===id);
+    Object.assign(ex,{name,muscle,sets,reps});
+  } else {
+    DB.exercises.push({id:uid('ex'),name,muscle,sets,reps});
+  }
+  closeModal(); commit();
+}
+function askDeleteExercise(id){
+  confirmAction('هتحذف التمرين ده نهائيًا من المكتبة، متأكد؟', ()=>{
+    DB.exercises = DB.exercises.filter(e=>e.id!==id);
+    Object.keys(DB.logs).forEach(d=>{
+      DB.logs[d].workout.entries = DB.logs[d].workout.entries.filter(e=>e.exerciseId!==id);
+    });
+    commit();
+  });
+}
+
+/* ============ MEALS LIBRARY TAB ============ */
+function renderMealsTab(){
+  const list = DB.meals[ui.mealCat]||[];
+  return `
+  <div class="page-head"><h1>مكتبة الوجبات</h1><p>عناصر الأكل مقسّمة فطار، غداء، عشاء، سناكس</p></div>
+  <div class="cat-tabs">${MEAL_CATS.map(c=>`<button class="${ui.mealCat===c.key?'active':''}" onclick="setMealCat('${c.key}')">${c.label}</button>`).join('')}</div>
+  <div class="section">
+    ${list.length===0?'<div class="empty">مفيش عناصر هنا لسه</div>':
+      list.map(it=>`
+      <div class="lib-row">
+        <div class="lib-info"><div class="nm">${it.name}</div><div class="meta">${it.cal} سعرة · بروتين ${it.protein}ج · كارب ${it.carb}ج · دهون ${it.fat}ج · ${it.unit}</div></div>
+        <div class="row-actions">
+          <div class="icon-btn" onclick="openEditMealItem('${ui.mealCat}','${it.id}')">${ICONS.edit}</div>
+          <div class="icon-btn danger" onclick="askDeleteMealItem('${ui.mealCat}','${it.id}')">${ICONS.trash}</div>
+        </div>
+      </div>`).join('')
+    }
+  </div>
+  <button class="btn primary block" onclick="openEditMealItem('${ui.mealCat}',null)">${ICONS.plus} إضافة عنصر جديد</button>
+  `;
+}
+function setMealCat(k){ui.mealCat=k; render();}
+function openEditMealItem(catKey, id){
+  const it = id?DB.meals[catKey].find(i=>i.id===id):{name:'',cal:0,protein:0,carb:0,fat:0,unit:'حصة'};
+  openModal(id?'تعديل عنصر':'عنصر أكل جديد', `
+    <div class="field"><label>اسم الأكلة</label><input id="f_name" value="${it.name}"></div>
+    <div class="field grid2">
+      <div><label>السعرات</label><input id="f_cal" type="number" value="${it.cal}"></div>
+      <div><label>البروتين (جم)</label><input id="f_protein" type="number" value="${it.protein}"></div>
+    </div>
+    <div class="field grid2">
+      <div><label>الكارب (جم)</label><input id="f_carb" type="number" value="${it.carb}"></div>
+      <div><label>الدهون (جم)</label><input id="f_fat" type="number" value="${it.fat}"></div>
+    </div>
+    <div class="field"><label>وحدة الحصة</label><input id="f_unit" value="${it.unit}" placeholder="مثال: كوب، حبة، حصة"></div>
+    <div class="modal-actions">
+      <button class="btn primary" onclick="saveMealItem('${catKey}','${id||''}')">حفظ</button>
+      <button class="btn ghost" onclick="closeModal()">إلغاء</button>
+    </div>
+  `);
+}
+function saveMealItem(catKey, id){
+  const name = document.getElementById('f_name').value.trim();
+  const cal = Number(document.getElementById('f_cal').value)||0;
+  const protein = Number(document.getElementById('f_protein').value)||0;
+  const carb = Number(document.getElementById('f_carb').value)||0;
+  const fat = Number(document.getElementById('f_fat').value)||0;
+  const unit = document.getElementById('f_unit').value.trim()||'حصة';
+  if(!name){toast('اكتب اسم الأكلة');return;}
+  if(id){
+    const it = DB.meals[catKey].find(i=>i.id===id);
+    Object.assign(it,{name,cal,protein,carb,fat,unit});
+  } else {
+    DB.meals[catKey].push({id:uid('mi'),name,cal,protein,carb,fat,unit});
+  }
+  closeModal(); commit();
+}
+function askDeleteMealItem(catKey, id){
+  confirmAction('هتحذف العنصر ده من المكتبة، متأكد؟', ()=>{
+    DB.meals[catKey] = DB.meals[catKey].filter(i=>i.id!==id);
+    Object.keys(DB.logs).forEach(d=>{
+      DB.logs[d].meals[catKey] = (DB.logs[d].meals[catKey]||[]).filter(e=>e.itemId!==id);
+    });
+    commit();
+  });
+}
+
+/* ============ SUPPLEMENTS LIBRARY TAB ============ */
+function renderSupplementsTab(){
+  const list = DB.supplements[ui.supSlot]||[];
+  return `
+  <div class="page-head"><h1>المكملات</h1><p>مقسّمة الصبح، نص اليوم، بالليل</p></div>
+  <div class="cat-tabs">${SUP_SLOTS.map(s=>`<button class="${ui.supSlot===s.key?'active':''}" onclick="setSupSlot('${s.key}')">${s.label}</button>`).join('')}</div>
+  <div class="section">
+    ${list.length===0?'<div class="empty">مفيش مكملات هنا لسه</div>':
+      list.map(sp=>`
+      <div class="lib-row">
+        <div class="lib-info"><div class="nm">${sp.name}</div><div class="meta">${sp.dose||''}</div></div>
+        <div class="row-actions">
+          <div class="icon-btn" onclick="openEditSupplement('${ui.supSlot}','${sp.id}')">${ICONS.edit}</div>
+          <div class="icon-btn danger" onclick="askDeleteSupplement('${ui.supSlot}','${sp.id}')">${ICONS.trash}</div>
+        </div>
+      </div>`).join('')
+    }
+  </div>
+  <button class="btn primary block" onclick="openEditSupplement('${ui.supSlot}',null)">${ICONS.plus} إضافة مكمل جديد</button>
+  `;
+}
+function setSupSlot(k){ui.supSlot=k; render();}
+function openEditSupplement(slot, id){
+  const sp = id?DB.supplements[slot].find(s=>s.id===id):{name:'',dose:''};
+  openModal(id?'تعديل مكمل':'مكمل جديد', `
+    <div class="field"><label>اسم المكمل</label><input id="f_name" value="${sp.name}"></div>
+    <div class="field"><label>الجرعة</label><input id="f_dose" value="${sp.dose}" placeholder="مثال: كبسولة، 5 جم"></div>
+    <div class="modal-actions">
+      <button class="btn primary" onclick="saveSupplement('${slot}','${id||''}')">حفظ</button>
+      <button class="btn ghost" onclick="closeModal()">إلغاء</button>
+    </div>
+  `);
+}
+function saveSupplement(slot, id){
+  const name = document.getElementById('f_name').value.trim();
+  const dose = document.getElementById('f_dose').value.trim();
+  if(!name){toast('اكتب اسم المكمل');return;}
+  if(id){
+    const sp = DB.supplements[slot].find(s=>s.id===id);
+    Object.assign(sp,{name,dose});
+  } else {
+    DB.supplements[slot].push({id:uid('sp'),name,dose});
+  }
+  closeModal(); commit();
+}
+function askDeleteSupplement(slot, id){
+  confirmAction('هتحذف المكمل ده من المكتبة، متأكد؟', ()=>{
+    DB.supplements[slot] = DB.supplements[slot].filter(s=>s.id!==id);
+    Object.keys(DB.logs).forEach(d=>{
+      DB.logs[d].supplements[slot] = (DB.logs[d].supplements[slot]||[]).filter(x=>x!==id);
+    });
+    commit();
+  });
+}
+
+/* ============ SETTINGS TAB ============ */
+function renderSettingsTab(){
+  const s = DB.settings;
+  return `
+  <div class="page-head"><h1>الإعدادات</h1><p>الأرقام دي بتتحسب عليها كل النسب والتقييم اليومي</p></div>
+  <div class="section">
+    <div class="subhead">المياه</div>
+    <div class="field grid2">
+      <div><label>حجم الازازة (مل)</label><input id="s_bottleMl" type="number" value="${s.bottleMl}"></div>
+      <div><label>الهدف اليومي (لتر)</label><input id="s_waterGoalL" type="number" step="0.1" value="${s.waterGoalL}"></div>
+    </div>
+    <div class="subhead">الأكل</div>
+    <div class="field grid2">
+      <div><label>هدف السعرات</label><input id="s_calorieGoal" type="number" value="${s.calorieGoal}"></div>
+      <div><label>هدف البروتين (جم)</label><input id="s_proteinGoal" type="number" value="${s.proteinGoal}"></div>
+    </div>
+    <div class="field grid2">
+      <div><label>هدف الكارب (جم)</label><input id="s_carbGoal" type="number" value="${s.carbGoal}"></div>
+      <div><label>هدف الدهون (جم)</label><input id="s_fatGoal" type="number" value="${s.fatGoal}"></div>
+    </div>
+    <button class="btn primary block" onclick="saveSettings()">حفظ الإعدادات</button>
+  </div>
+  <div class="section">
+    <div class="subhead" style="color:var(--red);">منطقة الخطر</div>
+    <button class="btn danger block" onclick="askResetAll()">${ICONS.trash} مسح كل البيانات والبدء من جديد</button>
+  </div>
+  `;
+}
+function saveSettings(){
+  DB.settings.bottleMl = Number(document.getElementById('s_bottleMl').value)||500;
+  DB.settings.waterGoalL = Number(document.getElementById('s_waterGoalL').value)||3;
+  DB.settings.calorieGoal = Number(document.getElementById('s_calorieGoal').value)||2200;
+  DB.settings.proteinGoal = Number(document.getElementById('s_proteinGoal').value)||150;
+  DB.settings.carbGoal = Number(document.getElementById('s_carbGoal').value)||220;
+  DB.settings.fatGoal = Number(document.getElementById('s_fatGoal').value)||70;
+  toast('اتحفظت الإعدادات');
+  commit();
+}
+function askResetAll(){
+  confirmAction('هتمسح كل البيانات: التمارين والوجبات والمكملات وكل الأيام المسجلة. الخطوة دي مفيهاش رجوع.', ()=>{
+    DB = defaultDB();
+    ui.date = todayStr();
+    closeModal();
+    commit();
+  });
+}
+
+/* ============ MODAL ============ */
+function openModal(title, bodyHTML){
+  document.getElementById('modalSheet').innerHTML = `<h3>${title}</h3>${bodyHTML}`;
+  document.getElementById('modal-root').classList.add('open');
+}
+function closeModal(){
+  document.getElementById('modal-root').classList.remove('open');
+}
+function confirmAction(msg, onYes){
+  document.getElementById('modalSheet').outerHTML = `<div class="modal-sheet confirm-sheet" id="modalSheet">
+    <h3>تأكيد</h3><p>${msg}</p>
+    <div class="modal-actions">
+      <button class="btn danger" id="confirmYesBtn">تأكيد الحذف</button>
+      <button class="btn ghost" onclick="closeModal()">إلغاء</button>
+    </div>
+  </div>`;
+  document.getElementById('modal-root').classList.add('open');
+  document.getElementById('confirmYesBtn').onclick = ()=>{ onYes(); closeModal(); };
+}
+
+/* ============ BOOT ============ */
+loadDB();
+</script>
+</body>
+</html>
