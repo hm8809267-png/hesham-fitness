@@ -9,147 +9,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#14171c;
-  --bg-elevated:#1a1e24;
-  --surface:#20252c;
-  --surface-2:#2a3039;
-  --border:#343b46;
-  --border-soft:#2a3038;
-  --text:#eef0f2;
-  --text-dim:#98a1ad;
-  --text-faint:#5e6672;
-  --accent:#c17a4f;
-  --accent-strong:#e0965f;
-  --accent-soft:rgba(193,122,79,.16);
-  --teal:#4fb8b0;
-  --teal-soft:rgba(79,184,176,.16);
-  --olive:#8bb35a;
-  --olive-soft:rgba(139,179,90,.16);
-  --amber:#e0a458;
-  --amber-soft:rgba(224,164,88,.16);
-  --red:#d9695f;
-  --red-soft:rgba(217,105,95,.16);
-  --radius:14px;
-  --radius-sm:10px;
-  --font-h:'Cairo',system-ui,sans-serif;
-  --font-b:'Tajawal',system-ui,sans-serif;
+  --bg:#14171c;--bg-elevated:#1a1e24;--surface:#20252c;--surface-2:#2a3039;
+  --border:#343b46;--border-soft:#2a3038;--text:#eef0f2;--text-dim:#98a1ad;--text-faint:#5e6672;
+  --accent:#c17a4f;--accent-strong:#e0965f;--accent-soft:rgba(193,122,79,.16);
+  --teal:#4fb8b0;--teal-soft:rgba(79,184,176,.16);
+  --olive:#8bb35a;--olive-soft:rgba(139,179,90,.16);
+  --amber:#e0a458;--amber-soft:rgba(224,164,88,.16);
+  --red:#d9695f;--red-soft:rgba(217,105,95,.16);
+  --radius:14px;--radius-sm:10px;
+  --font-h:'Cairo',system-ui,sans-serif;--font-b:'Tajawal',system-ui,sans-serif;
 }
-*{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--font-b);
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;
-}
-#app{
-  max-width:480px;
-  margin:0 auto;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  background:var(--bg);
-  border-inline:1px solid var(--border-soft);
-  position:relative;
-}
-#brand{
-  padding:16px 18px 10px;
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-}
-#brand .wordmark{
-  font-family:var(--font-h);
-  font-weight:900;
-  font-size:15px;
-  letter-spacing:.5px;
-  color:var(--text);
-}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);-webkit-font-smoothing:antialiased;min-height:100vh;}
+#app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);border-inline:1px solid var(--border-soft);position:relative;}
+#brand{padding:16px 18px 10px;display:flex;align-items:baseline;justify-content:space-between;}
+#brand .wordmark{font-family:var(--font-h);font-weight:900;font-size:15px;letter-spacing:.5px;color:var(--text);}
 #brand .wordmark span{color:var(--accent-strong);}
-#brand .streak{
-  font-size:12px;
-  color:var(--text-faint);
-  font-weight:700;
-}
-#view{
-  flex:1;
-  padding:4px 16px 100px;
-  overflow-y:auto;
-}
+#brand .streak{font-size:12px;color:var(--text-faint);font-weight:700;}
+#view{flex:1;padding:4px 16px 100px;overflow-y:auto;}
 h1,h2,h3{font-family:var(--font-h);margin:0;color:var(--text);}
-.eyebrow{
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:1px;
-  color:var(--text-faint);
-  text-transform:uppercase;
-  margin-bottom:4px;
-}
-.section{
-  background:var(--surface);
-  border:1px solid var(--border-soft);
-  border-radius:var(--radius);
-  padding:16px;
-  margin-bottom:14px;
-}
-.section-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
-}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--text-faint);text-transform:uppercase;margin-bottom:4px;}
+.section{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px;margin-bottom:14px;}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .section-head h2{font-size:16px;font-weight:800;}
 .section-head .sub{font-size:12px;color:var(--text-dim);font-weight:500;}
-.pill{
-  font-size:11px;
-  font-weight:800;
-  padding:3px 10px;
-  border-radius:99px;
-  background:var(--surface-2);
-  color:var(--text-dim);
-}
+.pill{font-size:11px;font-weight:800;padding:3px 10px;border-radius:99px;background:var(--surface-2);color:var(--text-dim);}
 .pill.olive{background:var(--olive-soft);color:var(--olive);}
 .pill.amber{background:var(--amber-soft);color:var(--amber);}
 .pill.accent{background:var(--accent-soft);color:var(--accent-strong);}
 .pill.teal{background:var(--teal-soft);color:var(--teal);}
-
-/* date nav */
-.datenav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin:10px 0 16px;
-}
-.datenav button.navbtn{
-  width:36px;height:36px;border-radius:10px;
-  border:1px solid var(--border);
-  background:var(--surface);
-  color:var(--text-dim);
-  font-size:16px;
-  display:flex;align-items:center;justify-content:center;
-}
-.datenav .datelabel{
-  text-align:center;
-}
+.datenav{display:flex;align-items:center;justify-content:space-between;margin:10px 0 16px;}
+.datenav button.navbtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text-dim);font-size:16px;display:flex;align-items:center;justify-content:center;}
+.datenav .datelabel{text-align:center;}
 .datenav .datelabel .day{font-family:var(--font-h);font-weight:800;font-size:15px;}
-.datenav .datelabel .today-tag{
-  font-size:10px;color:var(--accent-strong);font-weight:800;cursor:pointer;
-}
-
-/* score ring */
-.score-card{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  padding:18px 16px;
-}
+.datenav .datelabel .today-tag{font-size:10px;color:var(--accent-strong);font-weight:800;cursor:pointer;}
+.score-card{display:flex;align-items:center;gap:18px;padding:18px 16px;}
 .ring-wrap{position:relative;width:112px;height:112px;flex:none;}
 .ring-wrap svg{transform:rotate(-90deg);}
-.ring-wrap .ring-num{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-}
+.ring-wrap .ring-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .ring-wrap .ring-num b{font-family:var(--font-h);font-size:28px;font-weight:900;}
 .ring-wrap .ring-num small{font-size:10px;color:var(--text-faint);font-weight:700;}
 .score-verdict{flex:1;}
@@ -161,78 +58,33 @@ h1,h2,h3{font-family:var(--font-h);margin:0;color:var(--text);}
 .bar-track{flex:1;height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden;}
 .bar-fill{height:100%;border-radius:99px;}
 .bar-row .val{font-size:11px;color:var(--text-faint);width:34px;flex:none;text-align:left;font-weight:700;}
-
-/* mini history */
 .hist-row{display:flex;gap:6px;justify-content:space-between;margin-top:2px;}
 .hist-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
 .hist-bar-track{width:100%;height:56px;border-radius:8px;background:var(--surface-2);display:flex;align-items:flex-end;overflow:hidden;}
 .hist-bar-fill{width:100%;border-radius:8px;}
 .hist-col .hd{font-size:10px;color:var(--text-faint);font-weight:700;}
-
-/* checklist items */
-.item-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 0;
-  border-bottom:1px solid var(--border-soft);
-}
+.item-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border-soft);}
 .item-row:last-child{border-bottom:none;}
-.check{
-  width:24px;height:24px;border-radius:8px;
-  border:1.5px solid var(--border);
-  background:var(--bg-elevated);
-  flex:none;
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;color:transparent;
-  transition:.15s;
-}
+.check{width:24px;height:24px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg-elevated);flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;color:transparent;transition:.15s;}
 .check.on{background:var(--olive);border-color:var(--olive);color:#0d0f12;}
 .item-info{flex:1;min-width:0;}
 .item-info .nm{font-size:13.5px;font-weight:700;}
 .item-info .meta{font-size:11px;color:var(--text-faint);margin-top:2px;}
 .qty-ctrl{display:flex;align-items:center;gap:6px;flex:none;}
-.qty-ctrl button{
-  width:24px;height:24px;border-radius:7px;border:1px solid var(--border);
-  background:var(--surface-2);color:var(--text-dim);font-size:13px;
-}
+.qty-ctrl button{width:24px;height:24px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-dim);font-size:13px;}
 .qty-ctrl .qv{font-size:12px;font-weight:800;width:30px;text-align:center;}
-
-.subhead{
-  font-size:11.5px;font-weight:800;color:var(--accent-strong);
-  margin:14px 0 4px;letter-spacing:.3px;
-}
+.subhead{font-size:11.5px;font-weight:800;color:var(--accent-strong);margin:14px 0 4px;letter-spacing:.3px;}
 .subhead:first-child{margin-top:0;}
-
-.empty{
-  text-align:center;padding:22px 10px;color:var(--text-faint);font-size:12.5px;
-}
-
-/* water */
+.empty{text-align:center;padding:22px 10px;color:var(--text-faint);font-size:12.5px;}
 .water-card{text-align:center;}
 .bottle-row{display:flex;align-items:center;justify-content:center;gap:16px;margin:14px 0 8px;}
-.bottle-row button{
-  width:46px;height:46px;border-radius:14px;
-  border:1px solid var(--border);
-  background:var(--surface-2);
-  color:var(--text);
-  font-size:20px;font-weight:800;
-}
+.bottle-row button{width:46px;height:46px;border-radius:14px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:20px;font-weight:800;}
 .bottle-row button.plus{background:var(--teal);color:#0d1414;border-color:var(--teal);}
 .bottle-count{font-family:var(--font-h);font-size:34px;font-weight:900;min-width:70px;}
 .bottle-count small{font-size:12px;color:var(--text-faint);display:block;font-weight:700;}
 .water-total{font-size:12.5px;color:var(--text-dim);margin-top:6px;}
 .water-total b{color:var(--teal);font-weight:800;}
-
-/* buttons */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:6px;
-  padding:10px 16px;border-radius:var(--radius-sm);
-  font-family:var(--font-b);font-weight:800;font-size:13px;
-  border:1px solid var(--border);
-  background:var(--surface-2);color:var(--text);
-  cursor:pointer;
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border-radius:var(--radius-sm);font-family:var(--font-b);font-weight:800;font-size:13px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);cursor:pointer;}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#19110a;}
 .btn.teal{background:var(--teal);border-color:var(--teal);color:#0d1414;}
 .btn.ghost{background:transparent;}
@@ -240,80 +92,36 @@ h1,h2,h3{font-family:var(--font-h);margin:0;color:var(--text);}
 .btn.block{width:100%;}
 .btn.sm{padding:6px 10px;font-size:11.5px;}
 .addbar{margin-top:6px;}
-
-/* tabs header for library pages */
 .page-head{padding:8px 2px 14px;}
 .page-head h1{font-size:21px;font-weight:900;}
 .page-head p{font-size:12.5px;color:var(--text-dim);margin-top:4px;}
-
 .cat-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;}
-.cat-tabs button{
-  flex:none;padding:8px 14px;border-radius:99px;border:1px solid var(--border);
-  background:var(--surface);color:var(--text-dim);font-family:var(--font-b);font-weight:800;font-size:12.5px;
-}
+.cat-tabs button{flex:none;padding:8px 14px;border-radius:99px;border:1px solid var(--border);background:var(--surface);color:var(--text-dim);font-family:var(--font-b);font-weight:800;font-size:12.5px;}
 .cat-tabs button.active{background:var(--accent);border-color:var(--accent);color:#19110a;}
-
-.lib-row{
-  display:flex;align-items:center;gap:10px;
-  padding:11px 0;border-bottom:1px solid var(--border-soft);
-}
+.lib-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border-soft);}
 .lib-row:last-child{border-bottom:none;}
 .lib-info{flex:1;min-width:0;}
 .lib-info .nm{font-size:13.5px;font-weight:700;}
 .lib-info .meta{font-size:11px;color:var(--text-faint);margin-top:3px;}
-.icon-btn{
-  width:30px;height:30px;border-radius:9px;border:1px solid var(--border);
-  background:var(--surface-2);color:var(--text-dim);flex:none;
-  display:flex;align-items:center;justify-content:center;
-}
+.icon-btn{width:30px;height:30px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-dim);flex:none;display:flex;align-items:center;justify-content:center;}
 .icon-btn.danger{color:var(--red);}
 .row-actions{display:flex;gap:6px;flex:none;}
-
-/* bottom nav */
-#bottomnav{
-  position:sticky;bottom:0;left:0;right:0;
-  display:flex;
-  background:var(--bg-elevated);
-  border-top:1px solid var(--border-soft);
-  padding:8px 6px calc(8px + env(safe-area-inset-bottom));
-  max-width:480px;margin:0 auto;
-}
-#bottomnav button{
-  flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;
-  background:none;border:none;color:var(--text-faint);
-  font-family:var(--font-b);font-size:10px;font-weight:700;
-  padding:6px 2px;border-radius:10px;
-}
+#bottomnav{position:sticky;bottom:0;left:0;right:0;display:flex;background:var(--bg-elevated);border-top:1px solid var(--border-soft);padding:8px 6px calc(8px + env(safe-area-inset-bottom));max-width:480px;margin:0 auto;}
+#bottomnav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;color:var(--text-faint);font-family:var(--font-b);font-size:10px;font-weight:700;padding:6px 2px;border-radius:10px;}
 #bottomnav button.active{color:var(--accent-strong);}
 #bottomnav button svg{width:20px;height:20px;}
-
-/* modal */
 #modal-root{position:fixed;inset:0;z-index:50;display:none;}
 #modal-root.open{display:block;}
 .modal-backdrop{position:absolute;inset:0;background:rgba(8,9,11,.62);}
-.modal-sheet{
-  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
-  width:100%;max-width:480px;
-  background:var(--bg-elevated);
-  border-top:1px solid var(--border);
-  border-radius:20px 20px 0 0;
-  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
-  max-height:88vh;overflow-y:auto;
-}
+.modal-sheet{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:480px;background:var(--bg-elevated);border-top:1px solid var(--border);border-radius:20px 20px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow-y:auto;}
 .modal-sheet h3{font-size:16px;font-weight:800;margin-bottom:14px;}
 .field{margin-bottom:12px;}
 .field label{display:block;font-size:11.5px;font-weight:800;color:var(--text-dim);margin-bottom:6px;}
-.field input,.field select,.field textarea{
-  width:100%;padding:10px 12px;border-radius:10px;
-  border:1px solid var(--border);background:var(--surface);color:var(--text);
-  font-family:var(--font-b);font-size:13.5px;
-}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font-b);font-size:13.5px;}
 .field .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .field .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
 .modal-actions{display:flex;gap:8px;margin-top:16px;}
 .modal-actions .btn{flex:1;}
-
-/* sets logging */
 .set-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
 .set-row .set-idx{width:22px;font-size:11px;color:var(--text-faint);font-weight:800;flex:none;}
 .set-row input{width:0;flex:1;padding:8px 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13px;}
@@ -328,40 +136,34 @@ h1,h2,h3{font-family:var(--font-h);margin:0;color:var(--text);}
 .switch.on{background:var(--olive);border-color:var(--olive);}
 .switch .dot{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;background:var(--text);transition:.15s;}
 .switch.on .dot{right:20px;background:#0d0f12;}
-
-/* toast */
-#toast{
-  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--surface-2);color:var(--text);border:1px solid var(--border);
-  padding:10px 18px;border-radius:99px;font-size:12.5px;font-weight:700;
-  opacity:0;pointer-events:none;transition:.2s;z-index:60;
-  max-width:90%;text-align:center;
-}
+#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface-2);color:var(--text);border:1px solid var(--border);padding:10px 18px;border-radius:99px;font-size:12.5px;font-weight:700;opacity:0;pointer-events:none;transition:.2s;z-index:60;max-width:90%;text-align:center;}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
 .confirm-sheet{max-width:340px;left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%);border-radius:18px;border:1px solid var(--border);}
 .confirm-sheet p{font-size:13px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;}
-
+.bmi-card{display:flex;align-items:center;gap:14px;padding:16px;}
+.bmi-ring{position:relative;width:90px;height:90px;flex:none;}
+.bmi-ring svg{transform:rotate(-90deg);}
+.bmi-ring .bmi-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.bmi-ring .bmi-num b{font-family:var(--font-h);font-size:22px;font-weight:900;}
+.bmi-ring .bmi-num small{font-size:9px;color:var(--text-faint);font-weight:700;}
+.bmi-info{flex:1;}
+.bmi-info .bmi-label{font-family:var(--font-h);font-weight:800;font-size:14px;margin-bottom:4px;}
+.bmi-info .bmi-desc{font-size:12px;color:var(--text-dim);line-height:1.6;}
+.auto-hint{font-size:11px;color:var(--text-faint);margin-top:4px;line-height:1.5;}
 ::-webkit-scrollbar{width:0;height:0;}
 </style>
+<base target="_blank">
 </head>
 <body>
 <div id="app">
-  <div id="brand">
-    <div class="wordmark">HESHAM <span>FITNESS</span></div>
-    <div class="streak" id="streakTag"></div>
-  </div>
+  <div id="brand"><div class="wordmark">HESHAM <span>FITNESS</span></div><div class="streak" id="streakTag"></div></div>
   <main id="view"></main>
   <nav id="bottomnav"></nav>
 </div>
-<div id="modal-root">
-  <div class="modal-backdrop" onclick="closeModal()"></div>
-  <div class="modal-sheet" id="modalSheet"></div>
-</div>
+<div id="modal-root"><div class="modal-backdrop" onclick="closeModal()"></div><div class="modal-sheet" id="modalSheet"></div></div>
 <div id="toast"></div>
-
 <script>
-/* ============ ICONS ============ */
+
 const ICONS = {
   today: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.5h17"/><path d="M8 3v3.2M16 3v3.2"/><path d="M8 13.2h2M8 16.6h2M14 13.2h2M14 16.6h2"/></svg>',
   ex: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M2.5 10.3v3.4"/><path d="M20 9v6M21.5 10.3v3.4"/><rect x="6" y="7.5" width="3" height="9" rx="1"/><rect x="15" y="7.5" width="3" height="9" rx="1"/><path d="M9 12h6"/></svg>',
@@ -373,13 +175,263 @@ const ICONS = {
   trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14M9 7V5.2A1.2 1.2 0 0 1 10.2 4h3.6A1.2 1.2 0 0 1 15 5.2V7M7 7l1 12.2a1.5 1.5 0 0 0 1.5 1.4h5a1.5 1.5 0 0 0 1.5-1.4L17 7"/></svg>',
   chevL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"/></svg>',
   chevR: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg>',
+  cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.5h17"/><path d="M8 3v3.2M16 3v3.2"/></svg>',
+  calc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M8 18h2M14 10h2M14 14h2M14 18h2"/></svg>',
 };
 
-/* ============ DEFAULT DATA ============ */
+const FOOD_DB = [
+  {keywords:['بيض','بيضة','eggs','egg'], cal:140, protein:12, carb:1, fat:10, unit:'بيضتين'},
+  {keywords:['صدر فراخ','صدر دجاج','chicken breast'], cal:165, protein:31, carb:0, fat:3.6, unit:'100جم'},
+  {keywords:['فخذ دجاج','chicken thigh'], cal:180, protein:20, carb:0, fat:10, unit:'100جم'},
+  {keywords:['سمك','تونة','tuna','fish'], cal:130, protein:26, carb:0, fat:1, unit:'100جم'},
+  {keywords:['سلمون','salmon'], cal:208, protein:20, carb:0, fat:13, unit:'100جم'},
+  {keywords:['لحم بقري','beef','steak'], cal:250, protein:26, carb:0, fat:15, unit:'100جم'},
+  {keywords:['كفتة','kofta'], cal:260, protein:18, carb:2, fat:20, unit:'100جم'},
+  {keywords:['شاورما','shawarma'], cal:280, protein:18, carb:20, fat:14, unit:'100جم'},
+  {keywords:['جبنة قريش','cottage cheese'], cal:98, protein:11, carb:3.4, fat:4.3, unit:'100جم'},
+  {keywords:['جبنة بيضا','white cheese','feta'], cal:264, protein:14, carb:4, fat:21, unit:'100جم'},
+  {keywords:['زبادي','yogurt','يوناني'], cal:59, protein:10, carb:3.6, fat:0.4, unit:'100جم'},
+  {keywords:['لبن','milk'], cal:42, protein:3.4, carb:5, fat:1, unit:'100مل'},
+  {keywords:['رز','أرز','rice'], cal:130, protein:2.7, carb:28, fat:0.3, unit:'100جم مطبوخ'},
+  {keywords:['رز أسمر','brown rice'], cal:112, protein:2.6, carb:24, fat:0.9, unit:'100جم مطبوخ'},
+  {keywords:['مكرونة','pasta','معكرونة'], cal:131, protein:5, carb:25, fat:1.1, unit:'100جم مطبوخ'},
+  {keywords:['خبز','عيش','bread'], cal:265, protein:9, carb:49, fat:3.2, unit:'100جم'},
+  {keywords:['خبز أسمر','brown bread','whole wheat'], cal:247, protein:13, carb:41, fat:3.4, unit:'100جم'},
+  {keywords:['شوفان','oatmeal','oats'], cal:389, protein:16.9, carb:66, fat:6.9, unit:'100جم'},
+  {keywords:['بطاطس','potato'], cal:77, protein:2, carb:17, fat:0.1, unit:'100جم'},
+  {keywords:['بطاطا حلوة','sweet potato'], cal:86, protein:1.6, carb:20, fat:0.1, unit:'100جم'},
+  {keywords:['ذرة','corn'], cal:86, protein:3.2, carb:19, fat:1.2, unit:'100جم'},
+  {keywords:['فول','beans','fava'], cal:88, protein:7.6, carb:16, fat:0.4, unit:'100جم'},
+  {keywords:['عدس','lentils'], cal:116, protein:9, carb:20, fat:0.4, unit:'100جم مطبوخ'},
+  {keywords:['حمص','chickpeas'], cal:164, protein:8.9, carb:27, fat:2.6, unit:'100جم'},
+  {keywords:['موز','banana'], cal:89, protein:1.1, carb:23, fat:0.3, unit:'حبة متوسطة'},
+  {keywords:['تفاح','apple'], cal:52, protein:0.3, carb:14, fat:0.2, unit:'حبة متوسطة'},
+  {keywords:['برتقال','orange'], cal:47, protein:0.9, carb:12, fat:0.1, unit:'حبة متوسطة'},
+  {keywords:['فراولة','strawberry'], cal:32, protein:0.7, carb:7.7, fat:0.3, unit:'100جم'},
+  {keywords:['عنب','grape'], cal:69, protein:0.7, carb:18, fat:0.2, unit:'100جم'},
+  {keywords:['بطيخ','watermelon'], cal:30, protein:0.6, carb:8, fat:0.2, unit:'100جم'},
+  {keywords:['مانجو','mango'], cal:60, protein:0.8, carb:15, fat:0.4, unit:'حبة متوسطة'},
+  {keywords:['تمر','dates'], cal:282, protein:2.5, carb:75, fat:0.4, unit:'100جم'},
+  {keywords:['خضار','سلطة','salad','vegetables'], cal:25, protein:1.5, carb:5, fat:0.2, unit:'طبق'},
+  {keywords:['طماطم','tomato'], cal:18, protein:0.9, carb:3.9, fat:0.2, unit:'100جم'},
+  {keywords:['خيار','cucumber'], cal:15, protein:0.7, carb:3.6, fat:0.1, unit:'100جم'},
+  {keywords:['بصل','onion'], cal:40, protein:1.1, carb:9, fat:0.1, unit:'100جم'},
+  {keywords:['فلفل','pepper'], cal:20, protein:0.9, carb:4.6, fat:0.2, unit:'100جم'},
+  {keywords:['باذنجان','eggplant'], cal:25, protein:1, carb:6, fat:0.2, unit:'100جم'},
+  {keywords:['كوسة','zucchini'], cal:17, protein:1.2, carb:3.1, fat:0.3, unit:'100جم'},
+  {keywords:['سبانخ','spinach'], cal:23, protein:2.9, carb:3.6, fat:0.4, unit:'100جم'},
+  {keywords:['لوز','almond'], cal:579, protein:21, carb:22, fat:49, unit:'30جم'},
+  {keywords:['فول سوداني','peanut'], cal:567, protein:26, carb:16, fat:49, unit:'30جم'},
+  {keywords:['كاجو','cashew'], cal:553, protein:18, carb:30, fat:44, unit:'30جم'},
+  {keywords:['جوز','walnut'], cal:654, protein:15, carb:14, fat:65, unit:'30جم'},
+  {keywords:['سوداني محمص','peanut butter'], cal:588, protein:25, carb:20, fat:50, unit:'100جم'},
+  {keywords:['زيت زيتون','olive oil'], cal:884, protein:0, carb:0, fat:100, unit:'ملعقة'},
+  {keywords:['زبدة','butter'], cal:717, protein:0.9, carb:0.1, fat:81, unit:'100جم'},
+  {keywords:['سمن','ghee'], cal:900, protein:0, carb:0, fat:100, unit:'ملعقة'},
+  {keywords:['شوكولاتة','chocolate'], cal:546, protein:4.9, carb:61, fat:31, unit:'100جم'},
+  {keywords:['عصير','juice'], cal:45, protein:0.7, carb:10, fat:0.2, unit:'كوب'},
+  {keywords:['سكر','sugar'], cal:387, protein:0, carb:100, fat:0, unit:'ملعقة'},
+  {keywords:['عسل','honey'], cal:304, protein:0.3, carb:82, fat:0, unit:'ملعقة'},
+  {keywords:['مربى','jam'], cal:250, protein:0.4, carb:62, fat:0.1, unit:'ملعقة'},
+  {keywords:['كشري','koshary'], cal:280, protein:10, carb:50, fat:6, unit:'طبق'},
+  {keywords:['فلافل','taameya'], cal:333, protein:13, carb:32, fat:18, unit:'100جم'},
+  {keywords:['طعمية','falafel'], cal:333, protein:13, carb:32, fat:18, unit:'100جم'},
+  {keywords:['ملوخية','molokhia'], cal:50, protein:5, carb:8, fat:0.5, unit:'طبق'},
+  {keywords:['بامية','okra'], cal:33, protein:2, carb:7, fat:0.2, unit:'طبق'},
+  {keywords:['محشي','mahshi','grape leaves'], cal:120, protein:4, carb:18, fat:4, unit:'3 حبات'},
+  {keywords:['سمك مشوي','grilled fish'], cal:180, protein:28, carb:0, fat:6, unit:'حصة'},
+  {keywords:['فراخ مشوية','grilled chicken'], cal:165, protein:31, carb:0, fat:3.6, unit:'حصة'},
+  {keywords:['لحمة مشوية','grilled meat'], cal:250, protein:26, carb:0, fat:15, unit:'حصة'},
+  {keywords:['كبدة','liver'], cal:165, protein:20, carb:5, fat:7, unit:'100جم'},
+  {keywords:['سجق','sausage'], cal:300, protein:15, carb:2, fat:26, unit:'100جم'},
+  {keywords:['بسطرمة','pastrami'], cal:250, protein:18, carb:1, fat:19, unit:'100جم'},
+  {keywords:['لانشون','luncheon'], cal:260, protein:14, carb:3, fat:21, unit:'100جم'},
+  {keywords:['فتة','fatta'], cal:350, protein:12, carb:45, fat:14, unit:'طبق'},
+  {keywords:['كباب','kebab'], cal:250, protein:22, carb:2, fat:17, unit:'سيخ'},
+  {keywords:['بيتزا','pizza'], cal:266, protein:11, carb:33, fat:10, unit:'شريحة'},
+  {keywords:['برجر','burger'], cal:295, protein:17, carb:30, fat:12, unit:'ساندويتش'},
+  {keywords:['بطاطس مقلية','fries'], cal:312, protein:3.4, carb:41, fat:15, unit:'حصة'},
+  {keywords:['سمبوسك','sambosa'], cal:180, protein:4, carb:20, fat:10, unit:'حبة'},
+  {keywords:['كنافة','kunafa'], cal:350, protein:6, carb:45, fat:16, unit:'حصة'},
+  {keywords:['بسبوسة','basbousa'], cal:380, protein:5, carb:55, fat:16, unit:'حصة'},
+  {keywords:['أم علي','umm ali'], cal:320, protein:8, carb:40, fat:14, unit:'حصة'},
+  {keywords:['مهلبية','mahalabia'], cal:180, protein:4, carb:30, fat:5, unit:'حصة'},
+  {keywords:['بليلة','belila'], cal:120, protein:4, carb:22, fat:2, unit:'حصة'},
+  {keywords:['عيش بلدي','baladi bread'], cal:250, protein:8, carb:50, fat:1, unit:'رغيف'},
+  {keywords:['عيش شامي','shami bread'], cal:260, protein:9, carb:52, fat:1.5, unit:'رغيف'},
+  {keywords:['عيش فينو','fino'], cal:270, protein:9, carb:54, fat:2, unit:'رغيف'},
+  {keywords:['كرواسان','croissant'], cal:406, protein:8, carb:46, fat:21, unit:'حبة'},
+  {keywords:['دونات','donut'], cal:452, protein:4, carb:51, fat:25, unit:'حبة'},
+  {keywords:['كيك','cake'], cal:371, protein:3.5, carb:53, fat:15, unit:'شريحة'},
+  {keywords:['بسكويت','biscuit'], cal:430, protein:7, carb:70, fat:14, unit:'100جم'},
+  {keywords:['شيبسي','chips'], cal:536, protein:7, carb:53, fat:35, unit:'100جم'},
+  {keywords:['بيبسي','pepsi','cola','soda'], cal:42, protein:0, carb:10.6, fat:0, unit:'علبة'},
+  {keywords:['شاي','tea'], cal:2, protein:0, carb:0.2, fat:0, unit:'كوب'},
+  {keywords:['قهوة','coffee'], cal:2, protein:0.3, carb:0, fat:0, unit:'كوب'},
+  {keywords:['نسكافيه','nescafe'], cal:5, protein:0.3, carb:0.8, fat:0.2, unit:'كوب'},
+  {keywords:['كابتشينو','cappuccino'], cal:120, protein:6, carb:10, fat:6, unit:'كوب'},
+  {keywords:['لبن رايب','laban rayeb'], cal:60, protein:3.5, carb:5, fat:3, unit:'كوب'},
+  {keywords:['جبنة رومي','romi cheese'], cal:380, protein:24, carb:2, fat:31, unit:'100جم'},
+  {keywords:['جبنة cheddar','cheddar'], cal:402, protein:25, carb:1.3, fat:33, unit:'100جم'},
+  {keywords:['جبنة موزاريلا','mozzarella'], cal:280, protein:28, carb:3, fat:17, unit:'100جم'},
+  {keywords:['بيض مقلي','fried egg'], cal:196, protein:13, carb:1, fat:15, unit:'بيضتين'},
+  {keywords:['بيض مسلوق','boiled egg'], cal:140, protein:12, carb:1, fat:10, unit:'بيضتين'},
+  {keywords:['أومليت','omelette'], cal:180, protein:12, carb:2, fat:14, unit:'2 بيضة'},
+  {keywords:['شكشوكة','shakshuka'], cal:220, protein:12, carb:8, fat:16, unit:'حصة'},
+  {keywords:['فول مدمس','ful medames'], cal:120, protein:8, carb:18, fat:2, unit:'طبق'},
+  {keywords:['طعمية ساندويتش','falafel sandwich'], cal:450, protein:14, carb:55, fat:20, unit:'ساندويتش'},
+  {keywords:['كشري صغير','small koshary'], cal:400, protein:12, carb:65, fat:10, unit:'طبق'},
+  {keywords:['كشري كبير','large koshary'], cal:700, protein:20, carb:110, fat:18, unit:'طبق'},
+  {keywords:['مكرونة بشاميل','macarona bechamel'], cal:350, protein:16, carb:35, fat:16, unit:'طبق'},
+  {keywords:['مكرونة صلصة','pasta red sauce'], cal:280, protein:10, carb:45, fat:8, unit:'طبق'},
+  {keywords:['مكرونة بيضا','pasta white sauce'], cal:320, protein:12, carb:40, fat:14, unit:'طبق'},
+  {keywords:['أرز بلبن','rice pudding'], cal:180, protein:5, carb:30, fat:5, unit:'حصة'},
+  {keywords:['أرز معمر','roz maamar'], cal:320, protein:8, carb:45, fat:12, unit:'طبق'},
+  {keywords:['أرز بالخلطة','rice mix'], cal:280, protein:8, carb:40, fat:10, unit:'طبق'},
+  {keywords:['أرز بالشعيرية','rice vermicelli'], cal:250, protein:6, carb:42, fat:8, unit:'طبق'},
+  {keywords:['كسكسي','couscous'], cal:112, protein:3.8, carb:23, fat:0.2, unit:'100جم'},
+  {keywords:['شوربة','soup'], cal:60, protein:3, carb:8, fat:2, unit:'طبق'},
+  {keywords:['شوربة خضار','vegetable soup'], cal:45, protein:2, carb:7, fat:1, unit:'طبق'},
+  {keywords:['شوربة فراخ','chicken soup'], cal:75, protein:5, carb:8, fat:2, unit:'طبق'},
+  {keywords:['شوربة لحمة','meat soup'], cal:90, protein:6, carb:8, fat:3, unit:'طبق'},
+  {keywords:['يخنة','stew'], cal:150, protein:10, carb:12, fat:7, unit:'طبق'},
+  {keywords:['بامية باللحمة','okra meat'], cal:180, protein:12, carb:10, fat:10, unit:'طبق'},
+  {keywords:['سبانخ باللحمة','spinach meat'], cal:160, protein:11, carb:8, fat:9, unit:'طبق'},
+  {keywords:['قرع عسلي','pumpkin'], cal:26, protein:1, carb:6.5, fat:0.1, unit:'100جم'},
+  {keywords:['جزر','carrot'], cal:41, protein:0.9, carb:9.6, fat:0.2, unit:'100جم'},
+  {keywords:['ليمون','lemon'], cal:29, protein:1.1, carb:9.3, fat:0.3, unit:'100جم'},
+  {keywords:['ثوم','garlic'], cal:149, protein:6.4, carb:33, fat:0.5, unit:'100جم'},
+  {keywords:['زيتون','olive'], cal:145, protein:1, carb:3.8, fat:15, unit:'100جم'},
+  {keywords:['فلفل حار','chili'], cal:40, protein:1.9, carb:8.8, fat:0.4, unit:'100جم'},
+  {keywords:['كزبرة','coriander'], cal:23, protein:2.1, carb:3.7, fat:0.5, unit:'100جم'},
+  {keywords:['بقدونس','parsley'], cal:36, protein:3, carb:6.3, fat:0.8, unit:'100جم'},
+  {keywords:['نعناع','mint'], cal:44, protein:3.8, carb:8.4, fat:0.7, unit:'100جم'},
+  {keywords:['ريحان','basil'], cal:22, protein:3.2, carb:2.7, fat:0.6, unit:'100جم'},
+  {keywords:['زعتر','thyme'], cal:276, protein:9, carb:63, fat:7, unit:'100جم'},
+  {keywords:['كركم','turmeric'], cal:312, protein:9.7, carb:67, fat:3.3, unit:'100جم'},
+  {keywords:['قرفة','cinnamon'], cal:247, protein:4, carb:81, fat:1.2, unit:'100جم'},
+  {keywords:['يانسون','anise'], cal:337, protein:17, carb:50, fat:16, unit:'100جم'},
+  {keywords:['حلبة','fenugreek'], cal:323, protein:23, carb:58, fat:6.4, unit:'100جم'},
+  {keywords:['كمون','cumin'], cal:375, protein:18, carb:44, fat:22, unit:'100جم'},
+  {keywords:['كزبرة ناشفة','coriander seed'], cal:298, protein:12, carb:55, fat:17, unit:'100جم'},
+  {keywords:['فانيليا','vanilla'], cal:288, protein:0.1, carb:13, fat:0.1, unit:'100جم'},
+  {keywords:['كاكاو','cocoa'], cal:228, protein:20, carb:58, fat:14, unit:'100جم'},
+  {keywords:['قهوة تركي','turkish coffee'], cal:5, protein:0.3, carb:0.8, fat:0.2, unit:'فنجان'},
+  {keywords:['شاي أخضر','green tea'], cal:2, protein:0.2, carb:0.2, fat:0, unit:'كوب'},
+  {keywords:['شاي نعناع','mint tea'], cal:3, protein:0.1, carb:0.5, fat:0, unit:'كوب'},
+  {keywords:['عصير برتقال','orange juice'], cal:45, protein:0.7, carb:10, fat:0.2, unit:'كوب'},
+  {keywords:['عصير مانجو','mango juice'], cal:60, protein:0.5, carb:15, fat:0.2, unit:'كوب'},
+  {keywords:['عصير تفاح','apple juice'], cal:46, protein:0.1, carb:11, fat:0.1, unit:'كوب'},
+  {keywords:['عصير جزر','carrot juice'], cal:39, protein:0.9, carb:9, fat:0.2, unit:'كوب'},
+  {keywords:['عصير طماطم','tomato juice'], cal:17, protein:0.9, carb:3.5, fat:0.1, unit:'كوب'},
+  {keywords:['ليموناضة','lemonade'], cal:40, protein:0.1, carb:10, fat:0.1, unit:'كوب'},
+  {keywords:['سوبيا','sobia'], cal:120, protein:2, carb:25, fat:1, unit:'كوب'},
+  {keywords:['خرشوف','artichoke'], cal:47, protein:3.3, carb:10.5, fat:0.2, unit:'100جم'},
+  {keywords:['كرنب','cabbage'], cal:25, protein:1.3, carb:5.8, fat:0.1, unit:'100جم'},
+  {keywords:['قرنبيط','cauliflower'], cal:25, protein:1.9, carb:5, fat:0.3, unit:'100جم'},
+  {keywords:['بروكلي','broccoli'], cal:34, protein:2.8, carb:7, fat:0.4, unit:'100جم'},
+  {keywords:['كرافس','celery'], cal:16, protein:0.7, carb:3, fat:0.2, unit:'100جم'},
+  {keywords:['لوبيا','green beans'], cal:31, protein:1.8, carb:7, fat:0.1, unit:'100جم'},
+  {keywords:['بسلة','peas'], cal:81, protein:5.4, carb:14, fat:0.4, unit:'100جم'},
+  {keywords:['فجل','radish'], cal:16, protein:0.7, carb:3.4, fat:0.1, unit:'100جم'},
+  {keywords:['لفت','turnip'], cal:28, protein:0.9, carb:6.4, fat:0.1, unit:'100جم'},
+  {keywords:['شمندر','beetroot'], cal:43, protein:1.6, carb:10, fat:0.2, unit:'100جم'},
+  {keywords:['يقطين','pumpkin'], cal:26, protein:1, carb:6.5, fat:0.1, unit:'100جم'},
+  {keywords:['فطر','mushroom'], cal:22, protein:3.1, carb:3.3, fat:0.3, unit:'100جم'},
+  {keywords:['فلفل رومي','bell pepper'], cal:20, protein:0.9, carb:4.6, fat:0.2, unit:'100جم'},
+  {keywords:['خس','lettuce'], cal:15, protein:1.4, carb:2.9, fat:0.2, unit:'100جم'},
+  {keywords:['جرجير','arugula'], cal:25, protein:2.6, carb:3.7, fat:0.7, unit:'100جم'},
+  {keywords:['كرنب أحمر','red cabbage'], cal:31, protein:1.4, carb:7.4, fat:0.2, unit:'100جم'},
+  {keywords:['كرنب أبيض','white cabbage'], cal:25, protein:1.3, carb:5.8, fat:0.1, unit:'100جم'},
+  {keywords:['كرنب صيني','chinese cabbage'], cal:16, protein:1.2, carb:3.2, fat:0.2, unit:'100جم'},
+  {keywords:['لوبيا بيضا','white beans'], cal:114, protein:7.3, carb:21, fat:0.3, unit:'100جم'},
+  {keywords:['لوبيا حمرا','red beans'], cal:127, protein:8.7, carb:22, fat:0.5, unit:'100جم'},
+  {keywords:['لوبيا سودا','black beans'], cal:132, protein:8.9, carb:24, fat:0.5, unit:'100جم'},
+  {keywords:['فاصوليا','kidney beans'], cal:127, protein:8.7, carb:22, fat:0.5, unit:'100جم'},
+  {keywords:['ترمس','lupini'], cal:119, protein:16, carb:10, fat:2.9, unit:'100جم'},
+  {keywords:['جريش','cracked wheat'], cal:342, protein:12, carb:72, fat:1.5, unit:'100جم'},
+  {keywords:['برغل','bulgur'], cal:342, protein:12, carb:72, fat:1.5, unit:'100جم'},
+  {keywords:['فريك','freekeh'], cal:325, protein:14, carb:65, fat:2.5, unit:'100جم'},
+  {keywords:['كينوا','quinoa'], cal:368, protein:14, carb:64, fat:6, unit:'100جم'},
+  {keywords:['تشيا','chia'], cal:486, protein:17, carb:42, fat:31, unit:'100جم'},
+  {keywords:['كتان','flax'], cal:534, protein:18, carb:29, fat:42, unit:'100جم'},
+  {keywords:['دوار شمس','sunflower'], cal:584, protein:21, carb:20, fat:51, unit:'100جم'},
+  {keywords:['لب قرع','pumpkin seeds'], cal:559, protein:30, carb:11, fat:49, unit:'100جم'},
+  {keywords:['سمسم','sesame'], cal:573, protein:17, carb:23, fat:50, unit:'100جم'},
+  {keywords:['طحينة','tahini'], cal:595, protein:17, carb:21, fat:53, unit:'100جم'},
+  {keywords:['حلاوة طحينية','halawa'], cal:469, protein:11, carb:60, fat:22, unit:'100جم'},
+  {keywords:['عسل أسود','molasses'], cal:290, protein:0.4, carb:75, fat:0.1, unit:'100جم'},
+  {keywords:['دبس','dibs'], cal:290, protein:0.4, carb:75, fat:0.1, unit:'100جم'},
+  {keywords:['خروب','carob'], cal:222, protein:4.6, carb:49, fat:0.7, unit:'100جم'},
+  {keywords:['تمر هندي','tamarind'], cal:239, protein:2.8, carb:63, fat:0.6, unit:'100جم'},
+  {keywords:['عرقسوس','licorice'], cal:375, protein:0, carb:93, fat:0, unit:'100جم'},
+  {keywords:['زنجبيل','ginger'], cal:80, protein:1.8, carb:18, fat:0.8, unit:'100جم'},
+  {keywords:['قرنفل','cloves'], cal:274, protein:6, carb:65, fat:13, unit:'100جم'},
+  {keywords:['هيل','cardamom'], cal:311, protein:11, carb:68, fat:7, unit:'100جم'},
+  {keywords:['جوز الطيب','nutmeg'], cal:525, protein:5.8, carb:49, fat:36, unit:'100جم'},
+  {keywords:['فلفل أسود','black pepper'], cal:251, protein:10, carb:64, fat:3.3, unit:'100جم'},
+  {keywords:['شمر','fennel'], cal:31, protein:1.2, carb:7.3, fat:0.2, unit:'100جم'},
+  {keywords:['خردل','mustard'], cal:508, protein:26, carb:28, fat:36, unit:'100جم'},
+  {keywords:['مايونيز','mayonnaise'], cal:680, protein:1, carb:0.6, fat:75, unit:'100جم'},
+  {keywords:['كاتشب','ketchup'], cal:112, protein:1.3, carb:26, fat:0.2, unit:'100جم'},
+  {keywords:['صلصة خردل','mustard sauce'], cal:150, protein:2, carb:15, fat:10, unit:'100جم'},
+  {keywords:['باربيكيو','bbq sauce'], cal:172, protein:1, carb:40, fat:0.3, unit:'100جم'},
+  {keywords:['صويا صوص','soy sauce'], cal:53, protein:8, carb:5, fat:0, unit:'100مل'},
+  {keywords:['خل','vinegar'], cal:18, protein:0, carb:0.9, fat:0, unit:'100مل'},
+  {keywords:['عصير ليمون','lemon juice'], cal:22, protein:0.4, carb:7, fat:0.2, unit:'100مل'},
+  {keywords:['زيت دوار شمس','sunflower oil'], cal:884, protein:0, carb:0, fat:100, unit:'100مل'},
+  {keywords:['زيت ذرة','corn oil'], cal:884, protein:0, carb:0, fat:100, unit:'100مل'},
+  {keywords:['مرجرين','margarine'], cal:717, protein:0.2, carb:0.7, fat:81, unit:'100جم'},
+  {keywords:['كريمة','cream'], cal:340, protein:2.1, carb:2.8, fat:36, unit:'100مل'},
+  {keywords:['كريمة حامضة','sour cream'], cal:193, protein:2.4, carb:4.6, fat:19, unit:'100مل'},
+  {keywords:['كريمة مخفوقة','whipped cream'], cal:257, protein:2.1, carb:12, fat:22, unit:'100مل'},
+  {keywords:['جبنة كريمة','cream cheese'], cal:342, protein:6, carb:4, fat:34, unit:'100جم'},
+  {keywords:['ماسكاربوني','mascarpone'], cal:429, protein:4.6, carb:4, fat:46, unit:'100جم'},
+  {keywords:['ريكوتا','ricotta'], cal:174, protein:11, carb:3, fat:13, unit:'100جم'},
+  {keywords:['بارميزان','parmesan'], cal:431, protein:38, carb:4, fat:29, unit:'100جم'},
+  {keywords:['بيكورينو','pecorino'], cal:387, protein:32, carb:3.6, fat:27, unit:'100جم'},
+  {keywords:['جودا','gouda'], cal:356, protein:25, carb:2.2, fat:28, unit:'100جم'},
+  {keywords:['إيدام','edam'], cal:357, protein:25, carb:1.4, fat:28, unit:'100جم'},
+  {keywords:['إمنتال','emmental'], cal:380, protein:29, carb:1.7, fat:29, unit:'100جم'},
+  {keywords:['غرويير','gruyere'], cal:413, protein:30, carb:0.4, fat:33, unit:'100جم'},
+  {keywords:['بري','brie'], cal:334, protein:21, carb:0.5, fat:28, unit:'100جم'},
+  {keywords:['كاممبير','camembert'], cal:300, protein:20, carb:0.5, fat:24, unit:'100جم'},
+  {keywords:['جبنة زرقاء','blue cheese'], cal:353, protein:21, carb:2.3, fat:29, unit:'100جم'},
+  {keywords:['جبنة ماعز','goat cheese'], cal:364, protein:22, carb:2.5, fat:30, unit:'100جم'},
+  {keywords:['حلوم','halloumi'], cal:320, protein:21, carb:2, fat:26, unit:'100جم'},
+  {keywords:['عكاوي','akkawi'], cal:290, protein:18, carb:3, fat:23, unit:'100جم'},
+  {keywords:['نابلسي','nabulsi'], cal:310, protein:19, carb:3, fat:25, unit:'100جم'},
+  {keywords:['لبنة','labneh'], cal:220, protein:12, carb:4, fat:18, unit:'100جم'},
+  {keywords:['كاشكافال','kashkaval'], cal:380, protein:25, carb:2, fat:30, unit:'100جم'},
+  {keywords:['تولوم','tulum'], cal:340, protein:20, carb:2, fat:28, unit:'100جم'},
+  {keywords:['لور','lor'], cal:180, protein:14, carb:4, fat:12, unit:'100جم'},
+  {keywords:['كوكاكولا','coke'], cal:42, protein:0, carb:10.6, fat:0, unit:'علبة'},
+  {keywords:['سبرايت','sprite'], cal:39, protein:0, carb:10, fat:0, unit:'علبة'},
+  {keywords:['فانتا','fanta'], cal:48, protein:0, carb:12, fat:0, unit:'علبة'},
+  {keywords:['سفن أب','7up'], cal:39, protein:0, carb:10, fat:0, unit:'علبة'},
+  {keywords:['ميرندا','mirinda'], cal:48, protein:0, carb:12, fat:0, unit:'علبة'},
+  {keywords:['ماونتن ديو','mountain dew'], cal:46, protein:0, carb:12, fat:0, unit:'علبة'},
+  {keywords:['ريد بول','red bull'], cal:45, protein:0, carb:11, fat:0, unit:'علبة'},
+  {keywords:['مونستر','monster'], cal:42, protein:0, carb:11, fat:0, unit:'علبة'},
+  {keywords:['باوريد','powerade'], cal:32, protein:0, carb:8, fat:0, unit:'علبة'},
+  {keywords:['جاتوريد','gatorade'], cal:36, protein:0, carb:9, fat:0, unit:'علبة'},
+  {keywords:['شاي مثلج','iced tea'], cal:35, protein:0, carb:9, fat:0, unit:'علبة'},
+];
+
+function autoCalcFood(name){
+  const n = name.toLowerCase().trim();
+  for(const item of FOOD_DB){
+    for(const kw of item.keywords){
+      if(n.includes(kw.toLowerCase())) return item;
+    }
+  }
+  return null;
+}
+
 function uid(p){return p+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
 function defaultDB(){
   return {
-    settings:{waterGoalL:3, bottleMl:500, calorieGoal:2200, proteinGoal:150, carbGoal:220, fatGoal:70},
+    settings:{waterGoalL:3, bottleMl:500, calorieGoal:2200, proteinGoal:150, carbGoal:220, fatGoal:70, heightCm:175, weightKg:75, gender:'male'},
     exercises:[
       {id:uid('ex'),name:'بنش برس بار',muscle:'صدر',sets:4,reps:'8-10'},
       {id:uid('ex'),name:'بنش انكلاين دمبل',muscle:'صدر',sets:3,reps:'10-12'},
@@ -514,6 +566,38 @@ function toast(msg){
   t.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+/* ============ BMI ENGINE ============ */
+function calcBMI(){
+  const h = Number(DB.settings.heightCm)||175;
+  const w = Number(DB.settings.weightKg)||75;
+  if(h<=0 || w<=0) return null;
+  const bmi = w / ((h/100)*(h/100));
+  return Math.round(bmi*10)/10;
+}
+function bmiLabel(bmi){
+  if(bmi<18.5) return ['نقص وزن','زود السعرات والبروتين، ركز على الأكل الكثيف.'];
+  if(bmi<25) return ['وزن مثالي','حافظ على نظامك، كمل تمرين وأكل نظيف.'];
+  if(bmi<30) return ['وزن زائد','ركز على عجز سعري بسيط (300-500 سعرة) وكارديو يومي.'];
+  return ['سمنة','ابدأ بعجز سعري واضح (500-700 سعرة) وكارديو يومي 30 دقيقة.'];
+}
+function bmiAdvice(){
+  const bmi = calcBMI();
+  if(!bmi) return null;
+  const [label, advice] = bmiLabel(bmi);
+  const gender = DB.settings.gender||'male';
+  const bmr = gender==='male'
+    ? (10*DB.settings.weightKg) + (6.25*DB.settings.heightCm) - (5*30) + 5
+    : (10*DB.settings.weightKg) + (6.25*DB.settings.heightCm) - (5*30) - 161;
+  const tdee = Math.round(bmr * 1.55);
+  let recCal = tdee;
+  if(bmi<18.5) recCal = tdee + 300;
+  else if(bmi<25) recCal = tdee;
+  else if(bmi<30) recCal = tdee - 400;
+  else recCal = tdee - 600;
+  const recProtein = Math.round(DB.settings.weightKg * (bmi>=25?2.0:1.8));
+  return {bmi, label, advice, tdee, recCal, recProtein};
 }
 
 /* ============ SCORE ENGINE ============ */
@@ -663,16 +747,20 @@ function renderToday(){
   const dash = circumference*(sc.overall/100);
   const vt = verdictText(sc.overall);
   const vTitle = vt[0], vDesc = vt[1];
+  const bmiData = bmiAdvice();
 
   return `
   <div class="datenav">
     <button class="navbtn" onclick="navDate(-1)">${ICONS.chevR}</button>
-    <div class="datelabel">
+    <div class="datelabel" onclick="openDatePicker()" style="cursor:pointer;">
       <div class="day">${fmtDateArabic(ui.date)}</div>
-      ${isToday?'':'<div class="today-tag" onclick="goToday()">الرجوع للنهاردة</div>'}
+      ${isToday?'<div class="today-tag" style="color:var(--text-faint);">اختار يوم قديم للتسجيل فيه</div>':'<div class="today-tag" onclick="event.stopPropagation();goToday()">الرجوع للنهاردة</div>'}
     </div>
     <button class="navbtn" onclick="navDate(1)">${ICONS.chevL}</button>
   </div>
+  <button class="btn ghost block" style="margin-bottom:14px;" onclick="openDatePicker()">${ICONS.cal} اختيار تاريخ معيّن (تسجيل أيام فاتت)</button>
+
+  ${bmiData ? renderBMICard(bmiData) : ''}
 
   <div class="section score-card">
     <div class="ring-wrap">
@@ -711,6 +799,35 @@ function barRow(label, val, color){
     <div class="lbl">${label}</div>
     <div class="bar-track"><div class="bar-fill" style="width:${clamp(val,0,100)}%;background:${color}"></div></div>
     <div class="val">${val}%</div>
+  </div>`;
+}
+
+function renderBMICard(data){
+  const circumference = 2*Math.PI*38;
+  let color = 'var(--olive)';
+  if(data.bmi<18.5) color='var(--teal)';
+  else if(data.bmi<25) color='var(--olive)';
+  else if(data.bmi<30) color='var(--amber)';
+  else color='var(--red)';
+  const dash = circumference*(Math.min(data.bmi,40)/40);
+  return `
+  <div class="section bmi-card">
+    <div class="bmi-ring">
+      <svg width="90" height="90" viewBox="0 0 90 90">
+        <circle cx="45" cy="45" r="38" fill="none" stroke="var(--surface-2)" stroke-width="8"/>
+        <circle cx="45" cy="45" r="38" fill="none" stroke="${color}" stroke-width="8"
+          stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference-dash}"/>
+      </svg>
+      <div class="bmi-num"><b>${data.bmi}</b><small>BMI</small></div>
+    </div>
+    <div class="bmi-info">
+      <div class="bmi-label" style="color:${color}">${data.label}</div>
+      <div class="bmi-desc">${data.advice}</div>
+      <div class="bmi-desc" style="margin-top:6px;">
+        <span class="pill accent">سعرات مقترحة: ${data.recCal}</span>
+        <span class="pill olive" style="margin-right:6px;">بروتين: ${data.recProtein}ج</span>
+      </div>
+    </div>
   </div>`;
 }
 
@@ -870,6 +987,29 @@ function renderHistoryStrip(){
 /* ---- today actions ---- */
 function navDate(delta){ ui.date = shiftDate(ui.date, delta); ensureLog(ui.date); render(); }
 function goToday(){ ui.date = todayStr(); render(); }
+function openDatePicker(){
+  openModal('اختار يوم', `
+    <div class="field">
+      <label>التاريخ</label>
+      <input type="date" id="f_datepick" value="${ui.date}" max="${todayStr()}">
+    </div>
+    <p style="font-size:12px;color:var(--text-dim);line-height:1.6;margin-bottom:14px;">
+      تقدر تختار أي يوم فات وتسجل فيه الأكل والتمرين والمكملات والمياه بتاعته، وهيتحسب له تقييم لوحده وهينضاف في سجل آخر 7 أيام.
+    </p>
+    <div class="modal-actions">
+      <button class="btn primary" onclick="pickDate()">افتح اليوم ده</button>
+      <button class="btn ghost" onclick="closeModal()">إلغاء</button>
+    </div>
+  `);
+}
+function pickDate(){
+  const v = document.getElementById('f_datepick').value;
+  if(!v){toast('اختار تاريخ');return;}
+  ui.date = v;
+  ensureLog(ui.date);
+  closeModal();
+  render();
+}
 function toggleRestDay(){
   const log = ensureLog(ui.date);
   log.workout.restDay = !log.workout.restDay;
@@ -1036,7 +1176,9 @@ function setMealCat(k){ui.mealCat=k; render();}
 function openEditMealItem(catKey, id){
   const it = id?DB.meals[catKey].find(i=>i.id===id):{name:'',cal:0,protein:0,carb:0,fat:0,unit:'حصة'};
   openModal(id?'تعديل عنصر':'عنصر أكل جديد', `
-    <div class="field"><label>اسم الأكلة</label><input id="f_name" value="${it.name}"></div>
+    <div class="field"><label>اسم الأكلة</label><input id="f_name" value="${it.name}" oninput="onMealNameChange()"></div>
+    <div class="auto-hint" id="autoHint"></div>
+    <button class="btn teal block" style="margin-bottom:12px;" onclick="autoFillMeal()">${ICONS.calc} حساب تلقائي من الاسم</button>
     <div class="field grid2">
       <div><label>السعرات</label><input id="f_cal" type="number" value="${it.cal}"></div>
       <div><label>البروتين (جم)</label><input id="f_protein" type="number" value="${it.protein}"></div>
@@ -1051,6 +1193,31 @@ function openEditMealItem(catKey, id){
       <button class="btn ghost" onclick="closeModal()">إلغاء</button>
     </div>
   `);
+}
+function onMealNameChange(){
+  const name = document.getElementById('f_name').value.trim();
+  const hint = document.getElementById('autoHint');
+  if(!hint) return;
+  const found = autoCalcFood(name);
+  if(found){
+    hint.innerHTML = `تم العثور على: <b>${found.keywords[0]}</b> — ${found.cal} سعرة · ${found.protein}ج بروتين · ${found.unit}`;
+    hint.style.color = 'var(--olive)';
+  } else {
+    hint.textContent = 'اكتب اسم الأكلة واضغط "حساب تلقائي" أو املأ البيانات يدويًا';
+    hint.style.color = 'var(--text-faint)';
+  }
+}
+function autoFillMeal(){
+  const name = document.getElementById('f_name').value.trim();
+  if(!name){toast('اكتب اسم الأكلة الأول');return;}
+  const found = autoCalcFood(name);
+  if(!found){toast('مش لاقي الأكلة دي في قاعدة البيانات، املأ يدوي');return;}
+  document.getElementById('f_cal').value = found.cal;
+  document.getElementById('f_protein').value = found.protein;
+  document.getElementById('f_carb').value = found.carb;
+  document.getElementById('f_fat').value = found.fat;
+  document.getElementById('f_unit').value = found.unit;
+  toast('اتحسبت تلقائي ✅');
 }
 function saveMealItem(catKey, id){
   const name = document.getElementById('f_name').value.trim();
@@ -1139,6 +1306,18 @@ function renderSettingsTab(){
   return `
   <div class="page-head"><h1>الإعدادات</h1><p>الأرقام دي بتتحسب عليها كل النسب والتقييم اليومي</p></div>
   <div class="section">
+    <div class="subhead">جسمك</div>
+    <div class="field grid2">
+      <div><label>الطول (سم)</label><input id="s_heightCm" type="number" value="${s.heightCm||175}"></div>
+      <div><label>الوزن (كجم)</label><input id="s_weightKg" type="number" step="0.1" value="${s.weightKg||75}"></div>
+    </div>
+    <div class="field">
+      <label>النوع</label>
+      <select id="s_gender">
+        <option value="male" ${(s.gender||'male')==='male'?'selected':''}>ذكر</option>
+        <option value="female" ${(s.gender||'male')==='female'?'selected':''}>أنثى</option>
+      </select>
+    </div>
     <div class="subhead">المياه</div>
     <div class="field grid2">
       <div><label>حجم الازازة (مل)</label><input id="s_bottleMl" type="number" value="${s.bottleMl}"></div>
@@ -1162,6 +1341,9 @@ function renderSettingsTab(){
   `;
 }
 function saveSettings(){
+  DB.settings.heightCm = Number(document.getElementById('s_heightCm').value)||175;
+  DB.settings.weightKg = Number(document.getElementById('s_weightKg').value)||75;
+  DB.settings.gender = document.getElementById('s_gender').value;
   DB.settings.bottleMl = Number(document.getElementById('s_bottleMl').value)||500;
   DB.settings.waterGoalL = Number(document.getElementById('s_waterGoalL').value)||3;
   DB.settings.calorieGoal = Number(document.getElementById('s_calorieGoal').value)||2200;
